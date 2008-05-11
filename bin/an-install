@@ -11,7 +11,6 @@ end
 
 require 'optparse'
 require 'ftools'
-require "ruby-debug"
 
 # NOTE: the option -p/--path= is given as an example, and should probably be replaced in your application.
 
@@ -45,5 +44,5 @@ path = OPTIONS[:path]
 
 f = File.new(File.expand_path(path) + "/.autotest",  "w")
 f.write "# ~.autotest\n"
-f.write "require 'carlosbrando-autotest-notification'"
+f.write "require 'autotest-notification'"
 f.close
