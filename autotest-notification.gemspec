@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.has_rdoc = true
   s.authors = ["Carlos Brando"]
   s.files = [
-    "autotest_notification.gemspec", 
+    "autotest-notification.gemspec", 
     "History.txt", 
     "License.txt",
     "Manifest.txt", 

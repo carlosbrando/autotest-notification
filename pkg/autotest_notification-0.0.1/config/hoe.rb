@@ -3,8 +3,8 @@ require 'autotest_notification/version'
 AUTHOR = 'Carlos Brando'  # can also be an array of Authors
 EMAIL = "eduardobrando@gmail.com"
 DESCRIPTION = "description of gem"
-GEM_NAME = 'autotest_notification' # what ppl will type to install your gem
-RUBYFORGE_PROJECT = 'autotest_notification' # The unix name for your project
+GEM_NAME = 'autotest-notification' # what ppl will type to install your gem
+RUBYFORGE_PROJECT = 'autotest-notification' # The unix name for your project
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 EXTRA_DEPENDENCIES = [
