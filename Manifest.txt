@@ -24,6 +24,7 @@ website/javascripts/rounded_corners_lite.inc.js
 website/stylesheets/screen.css
 website/template.html.erb
 bin/an-install
+bin/an-uninstall
 images/pass.png
 images/fail.png
 autotest-notification.gemspec

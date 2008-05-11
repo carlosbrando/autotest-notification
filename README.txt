@@ -1,6 +1,7 @@
-= autotest_notification
+The Autotest Notification Gem
+=============================
 
-* http://www.nomedojogo.com
+* http://github.com/carlosbrando/autotest-notification/
 
 == DESCRIPTION:
 
@@ -27,7 +28,7 @@ an-install
 
 (The MIT License)
 
-Copyright (c) 2008 FIX
+Copyright (c) 2008 Carlos Brando
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

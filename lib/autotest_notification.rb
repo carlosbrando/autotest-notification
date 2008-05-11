@@ -1,5 +1,5 @@
 $:.unshift(File.dirname(__FILE__)) unless
-  $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
+$:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
 module AutotestNotification
   FAIL    = -1
@@ -54,6 +54,8 @@ module AutotestNotification
         notify_send(title, msg, img)
       when /darwin/
         growl(title, msg, img, pri)
+      # when /mswin/
+      #   snarl(title, msg, img)
       end
     end
 
@@ -68,5 +70,9 @@ module AutotestNotification
     def notify_send(title, msg, img)
       system "notify-send -t #{EXPIRATION_IN_SECONDS * 1000} -i #{img} '#{title}' '#{msg}'"
     end
+
+    # def snarl(title, msg, img)
+    #   Snarl.show_message(title, msg, img)      
+    # end
   end
 end

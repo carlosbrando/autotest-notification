@@ -1,4 +1,7 @@
 == 0.0.1 2008-05-11
 
+* 0.0.4
+	* Added an-uninstall to remove the autotest hook.
+
 * 1 major enhancement:
   * Initial release
