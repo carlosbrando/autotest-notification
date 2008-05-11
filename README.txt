@@ -4,7 +4,7 @@
 
 == DESCRIPTION:
 
-FIX (describe your package)
+Set the autotest to display messages through software such as Growl
 
 == FEATURES/PROBLEMS:
 
@@ -20,7 +20,7 @@ FIX (describe your package)
 
 == INSTALL:
 
-sudo gem install autotest-notification
+sudo gem install carlosbrando-autotest-notification --source=http://gems.github.com
 an-install
 
 == LICENSE:

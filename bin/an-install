@@ -45,5 +45,5 @@ path = OPTIONS[:path]
 
 f = File.new(File.expand_path(path) + "/.autotest",  "w")
 f.write "# ~.autotest\n"
-f.write "require 'autotest-notification'"
+f.write "require 'carlosbrando-autotest-notification'"
 f.close
