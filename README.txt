@@ -1,6 +1,6 @@
 = autotest_notification
 
-* FIX (url)
+* http://www.nomedojogo.com
 
 == DESCRIPTION:
 
@@ -20,7 +20,8 @@ FIX (describe your package)
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+sudo gem install autotest-notification
+an-install
 
 == LICENSE:
 
