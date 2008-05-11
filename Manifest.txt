@@ -26,3 +26,4 @@ website/template.html.erb
 bin/an-install
 images/pass.png
 images/fail.png
+autotest_notification.gemspec
