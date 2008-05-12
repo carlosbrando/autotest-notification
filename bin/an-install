@@ -46,4 +46,5 @@ f = File.new(File.expand_path(path) + "/.autotest",  "w")
 f.write "# ~.autotest\n"
 f.write "require 'autotest_notification'"
 f.close
-puts "\nAs from now all tests will be notified automatically.\n"
+puts "\nAs from now all tests will be notified automatically."
+puts "" # a blank line

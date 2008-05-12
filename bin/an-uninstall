@@ -42,5 +42,9 @@ end
 
 path = OPTIONS[:path]
 
-File.delete(File.expand_path(path) + "/.autotest")
-puts "\nYou no longer receive notifications of your tests.\n"
+autotest_file = File.expand_path(path) + "/.autotest"
+if File.exist?(autotest_file)
+  File.delete(autotest_file)
+  puts "\nYou no longer receive notifications of your tests."
+  puts "" # a blank line
+end
