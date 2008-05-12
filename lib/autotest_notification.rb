@@ -13,7 +13,9 @@ module AutotestNotification
   FAIL_IMAGE       = "#{IMAGES_DIRECTORY}/fail.png"
 
   Autotest.add_hook :ran_command do |at|
-    result = at.results.last
+    p at.results.methods
+    result = at.results.split("\n").last
+    print "Result found=#{result}"
     if result
 
       # Test::Unit
@@ -49,11 +51,15 @@ module AutotestNotification
 
   class << self
     def notify(title, msg, img = SUCCESS_IMAGE, pri = 0)
+	    puts "#{RUBY_PLATFORM}\n"
       case RUBY_PLATFORM
       when /linux/
         notify_send(title, msg, img)
       when /darwin/
         growl(title, msg, img, pri)
+       when /cygwin/
+        img = `cygpath -m #{img}`
+        snarl(title, msg, img.strip)
        when /mswin/
         snarl(title, msg, img)
       end
@@ -72,7 +78,9 @@ module AutotestNotification
     end
 
     def snarl(title, msg, img)
-      system "sncmd /m '#{title}' '#{msg}' '#{img}' /t #{EXPIRATION_IN_SECONDS}"
+     message = "sncmd /m '#{title}' '#{msg}' '#{img}' /t #{EXPIRATION_IN_SECONDS}"
+     print "#{message}\n"
+     system message
     end
   end
 end
