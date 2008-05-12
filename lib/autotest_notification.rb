@@ -54,8 +54,8 @@ module AutotestNotification
         notify_send(title, msg, img)
       when /darwin/
         growl(title, msg, img, pri)
-      # when /mswin/
-      #   snarl(title, msg, img)
+       when /mswin/
+        snarl(title, msg, img)
       end
     end
 
@@ -71,8 +71,8 @@ module AutotestNotification
       system "notify-send -t #{EXPIRATION_IN_SECONDS * 1000} -i #{img} '#{title}' '#{msg}'"
     end
 
-    # def snarl(title, msg, img)
-    #   Snarl.show_message(title, msg, img)      
-    # end
+    def snarl(title, msg, img)
+      system "sncmd /m '#{title}' '#{msg}' '#{img}' /t #{EXPIRATION_IN_SECONDS}"
+    end
   end
 end
