@@ -1,34 +1,35 @@
 The Autotest Notification Gem
 =============================
 
-* http://github.com/carlosbrando/autotest-notification/
+This gem set the autotest (ZenTest) to send messages to software as Growl or LibNotify, displaying a window with the results.
 
-== DESCRIPTION:
 
-Set the autotest to display messages through software such as Growl
+===========
+Getting started
+===========
 
-== FEATURES/PROBLEMS:
+	$ sudo gem install carlosbrando-autotest-notification --source=http://gems.github.com
+	
+Run it:
 
-* FIX (list of features or problems)
+	$ an-install
 
-== SYNOPSIS:
+	
+==========
+Contributors
+==========
 
-  FIX (code sample of usage)
+- carlosbrando
+- simpsomboy
 
-== REQUIREMENTS:
 
-* FIX (list of requirements)
-
-== INSTALL:
-
-sudo gem install carlosbrando-autotest-notification --source=http://gems.github.com
-an-install
-
-== LICENSE:
+==========
+License
+==========
 
 (The MIT License)
 
-Copyright (c) 2008 Carlos Brando
+Copyright (c) 2008
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
