@@ -1,5 +1,5 @@
 $:.unshift(File.dirname(__FILE__)) unless
-$:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
+  $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
 module AutotestNotification
   FAIL    = -1
@@ -13,9 +13,7 @@ module AutotestNotification
   FAIL_IMAGE       = "#{IMAGES_DIRECTORY}/fail.png"
 
   Autotest.add_hook :ran_command do |at|
-    p at.results.methods
-    result = at.results.split("\n").last
-    print "Result found=#{result}"
+    result = at.results.split("\n").last.to_s
     if result
 
       # Test::Unit
@@ -51,16 +49,15 @@ module AutotestNotification
 
   class << self
     def notify(title, msg, img = SUCCESS_IMAGE, pri = 0)
-	    puts "#{RUBY_PLATFORM}\n"
       case RUBY_PLATFORM
       when /linux/
         notify_send(title, msg, img)
       when /darwin/
         growl(title, msg, img, pri)
-       when /cygwin/
+      when /cygwin/
         img = `cygpath -m #{img}`
         snarl(title, msg, img.strip)
-       when /mswin/
+      when /mswin/
         snarl(title, msg, img)
       end
     end
@@ -78,9 +75,8 @@ module AutotestNotification
     end
 
     def snarl(title, msg, img)
-     message = "sncmd /m '#{title}' '#{msg}' '#{img}' /t #{EXPIRATION_IN_SECONDS}"
-     print "#{message}\n"
-     system message
+      message = "sncmd /m '#{title}' '#{msg}' '#{img}' /t #{EXPIRATION_IN_SECONDS}"
+      system message
     end
   end
 end

@@ -1,12 +1,12 @@
 require 'autotest_notification/version'
 
-AUTHOR = 'Carlos Brando'  # can also be an array of Authors
+AUTHOR = "Carlos Brando"
 EMAIL = "eduardobrando@gmail.com"
 DESCRIPTION = "Set the autotest to display messages on the operating system using software such as Growl and LibNotify."
 GEM_NAME = 'autotest-notification' # what ppl will type to install your gem
 RUBYFORGE_PROJECT = '' # The unix name for your project
-HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
-DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
+HOMEPATH = "http://github.com/carlosbrando/autotest-notification/"
+DOWNLOAD_PATH = "http://github.com/carlosbrando/autotest-notification/tarball/master"
 EXTRA_DEPENDENCIES = [
 #  ['activesupport', '>= 1.3.1']
 ]    # An array of rubygem dependencies [name, version]
