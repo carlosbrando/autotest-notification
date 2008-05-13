@@ -80,11 +80,11 @@ To turn off the notifier:
 
 == Contributors
 
-* carlosbrando [http://www.nomedojogo.com/]
-* simpsomboy [http://alexandredasilva.wordpress.com/]
-* urubatan [http://www.urubatan.info/]
-* chjunior [http://tas.milk-it.net/]
-* daviscabral [http://blog.impactmedia.com.br/]
+* carlosbrando [http://www.nomedojogo.com]
+* simpsomboy [http://alexandredasilva.wordpress.com]
+* urubatan [http://www.urubatan.info]
+* chjunior [http://tas.milk-it.net]
+* daviscabral [http://blog.impactmedia.com.br]
 * tapajos [http://www.improveit.com.br/tapajos]
 
 

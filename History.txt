@@ -1,4 +1,7 @@
-== 0.2.0 2008-05-13
+== 0.2.1 2008-05-13
+	* Starting to add tests.
+
+* 0.2.0 2008-05-13
 	* Added support to Gnome at linux.rb (zenity).
 	* Changed filename windows.rb to cygwin.rb and added a new windows.rb file that uses Snarl to show the messages.
 	* README.txt updated with windows and linux dependencies.
