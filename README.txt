@@ -85,6 +85,7 @@ To turn off the notifier:
 * urubatan [http://www.urubatan.info/]
 * chjunior [http://tas.milk-it.net/]
 * daviscabral [http://blog.impactmedia.com.br/]
+* tapajos [http://www.improveit.com.br/tapajos]
 
 
 == LICENSE:
