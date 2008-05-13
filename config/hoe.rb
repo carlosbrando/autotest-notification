@@ -1,6 +1,6 @@
 require 'autotest_notification/version'
 
-AUTHOR = ["Carlos Brando", "Rodrigo Urubatan", "Alexandre da Silva", "Carlos Júnior"]
+AUTHOR = "Carlos Brando, Rodrigo Urubatan, Alexandre da Silva, Carlos Júnior"
 EMAIL = "eduardobrando@gmail.com"
 DESCRIPTION = "Set the autotest to display messages on the operating system using software such as Growl and LibNotify."
 GEM_NAME = 'autotest-notification' # what ppl will type to install your gem

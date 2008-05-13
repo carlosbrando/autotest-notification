@@ -8,6 +8,9 @@ config/hoe.rb
 config/requirements.rb
 lib/autotest_notification.rb
 lib/autotest_notification/version.rb
+lib/autotest_notification/linux.rb
+lib/autotest_notification/mac.rb
+lib/autotest_notification/windows.rb
 script/console
 script/destroy
 script/generate

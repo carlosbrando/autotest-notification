@@ -1,5 +1,7 @@
-$:.unshift(File.dirname(__FILE__)) unless
-  $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
+$:.unshift(File.dirname(__FILE__))
+require 'autotest_notification/linux'
+require 'autotest_notification/mac'
+require 'autotest_notification/windows'
 
 module AutotestNotification
   FAIL    = -1
@@ -13,9 +15,9 @@ module AutotestNotification
   FAIL_IMAGE       = "#{IMAGES_DIRECTORY}/fail.png"
 
   Autotest.add_hook :ran_command do |at|
-    
+
     result = at.results.is_a?(Array) ? at.results.last : at.results.split("\n").last
-    
+
     if result
 
       # Test::Unit
@@ -53,40 +55,16 @@ module AutotestNotification
     def notify(title, msg, img = SUCCESS_IMAGE, pri = 0)
       case RUBY_PLATFORM
       when /linux/
-        has_notify?? notify_send(title, msg, img) : kdialog(title, msg, img)
+        Linux.notify(title, msg, img)
       when /darwin/
-        growl(title, msg, img, pri)
-      when /cygwin/
-        img = `cygpath -m #{img}`
-        snarl(title, msg, img.strip)
-      when /mswin/
-        snarl(title, msg, img)
+        Mac.notify(title, msg, img, pri)
+      when /mswin|cygwin/
+        Windows.notify(title, msg, img)
       end
     end
 
     def pluralize(text, number)
       "#{number} #{text}#{'s' if number != 1}"
-    end
-
-    def growl(title, msg, img, pri = 0)
-      system "growlnotify -n autotest --image #{img} -p #{pri} -m #{msg.inspect} #{title}"
-    end
-
-    def notify_send(title, msg, img)
-      system "notify-send -t #{EXPIRATION_IN_SECONDS * 1000} -i #{img} '#{title}' '#{msg}'"
-    end
-
-    def kdialog(title, msg, img)
-      system "kdialog --title '#{title}' --passivepopup '#{msg}' #{EXPIRATION_IN_SECONDS}"
-    end
-
-    def has_notify?
-      system "which notify-send 2> /dev/null"
-    end
-
-    def snarl(title, msg, img)
-      message = "sncmd /m '#{title}' '#{msg}' '#{img}' /t #{EXPIRATION_IN_SECONDS}"
-      system message
     end
   end
 end
