@@ -27,6 +27,7 @@ Run it:
 * carlosbrando
 * simpsomboy
 * urubatan
+* chjunior
 
 == LICENSE:
 

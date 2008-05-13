@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.specification_version = 2 if s.respond_to? :specification_version=
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Carlos Brando", "Rodrigo Urubatan", "Alexandre da Silva"]
+  s.authors = ["Carlos Brando", "Rodrigo Urubatan", "Alexandre da Silva", "Carlos Júnior"]
   s.date = %q{2008-05-12}
   s.description = %q{Set the autotest to display messages on the operating system using software such as Growl and LibNotify.}
   s.email = ["eduardobrando@gmail.com"]
