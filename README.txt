@@ -4,23 +4,31 @@
 
 == DESCRIPTION:
 
-This gem set the autotest (ZenTest) to send messages to software as Growl or LibNotify, displaying a window with the results.
-
-== FEATURES/PROBLEMS:
-
-* Running on Mac (Growl), Linux (LibNotify) and Windows (Snarl).
+This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+* If you're using a Mac:
+		You need to have Growl and growlnotify installed on your machine.
+		
+		Download the Growl [http://growl.info/index.php] and install it like any other application on your Mac
+		
+		Then you must install the growlnotify.
+		
+		In your shell, cd to the directory on the Growl disk image containing growlnotify, and type ./install.sh.
+		That script will install growlnotify to /usr/local/bin and the manpage to /usr/local/man.
 
 == INSTALL:
 
 	$ sudo gem install carlosbrando-autotest-notification --source=http://gems.github.com
 	
-Run it:
+Run it to let the notifier in automatic mode:
 
 	$ an-install
+
+To turn off the notifier:
+	
+	$ an-uninstall
 
 == Contributors
 
@@ -32,7 +40,7 @@ Run it:
 
 (The MIT License)
 
-Copyright (c) 2008 FIX
+Copyright (c) 2008
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
