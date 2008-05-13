@@ -13,7 +13,9 @@ module AutotestNotification
   FAIL_IMAGE       = "#{IMAGES_DIRECTORY}/fail.png"
 
   Autotest.add_hook :ran_command do |at|
-    result = at.results.split("\n").last.to_s
+    
+    result = at.results.is_a?(Array) ? at.results.last : at.results.split("\n").last
+    
     if result
 
       # Test::Unit
