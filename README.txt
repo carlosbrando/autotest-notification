@@ -1,6 +1,6 @@
 = The Autotest Notification Gem
 
-* http://www.nomedojogo.com/2008/05/12/autotest-notification-gem/
+* http://github.com/carlosbrando/autotest-notification/
 
 == DESCRIPTION:
 
