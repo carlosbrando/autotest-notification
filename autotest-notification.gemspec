@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
   s.name = %q{autotest-notification}
-  s.version = "0.0.8"
+  s.version = "0.0.9"
 
   s.specification_version = 2 if s.respond_to? :specification_version=
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Carlos Brando", "Rodrigo Urubatan", "Alexandre da Silva"]
-  s.date = %q{2008-05-12}
+  s.authors = ["Carlos Brando", "Rodrigo Urubatan", "Alexandre da Silva", "Carlos J\303\272nior"]
+  s.date = %q{2008-05-13}
   s.description = %q{Set the autotest to display messages on the operating system using software such as Growl and LibNotify.}
   s.email = ["eduardobrando@gmail.com"]
   s.executables = ["an-install", "an-uninstall"]

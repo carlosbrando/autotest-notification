@@ -32,9 +32,10 @@ To turn off the notifier:
 
 == Contributors
 
-* carlosbrando
-* simpsomboy
-* urubatan
+* carlosbrando [http://www.nomedojogo.com/]
+* simpsomboy [http://alexandredasilva.wordpress.com/]
+* urubatan [http://www.urubatan.info/]
+* chjunior [http://tas.milk-it.net/]
 
 == LICENSE:
 
