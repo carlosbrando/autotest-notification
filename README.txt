@@ -71,7 +71,7 @@ Run it to let the notifier in automatic mode:
 
 In Windows without cygwin, it's necessary to install in the directory of the project:
   
-  $ an-uninstall -p C:\projects\my_project
+  $ an-install -p C:\projects\my_project
 
 To turn off the notifier:
   
