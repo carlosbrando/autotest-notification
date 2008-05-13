@@ -10,6 +10,11 @@ This gem set the autotest (ZenTest) to send messages to software as Growl, LibNo
 
 == REQUIREMENTS:
 
+Independent of operating system you are using, you must install the ZenTest:
+
+	$ gem install ZenTest
+
+
 * If you're using a Mac:
     You need to have Growl and growlnotify installed on your machine.
     
@@ -37,7 +42,9 @@ This gem set the autotest (ZenTest) to send messages to software as Growl, LibNo
 
     Download DiffUtils for Windows [http://gnuwin32.sourceforge.net/packages/diffutils.htm] and follow the installation instructions on the site.
     
-    Run in the command prompt: gem install ruby-snarl
+    Run in the command prompt:
+
+			$ gem install ruby-snarl
     
     After all that. You must update the environment variable PATH with the path to the bin of diffutils.
     It's the price that was paid for using Windows (try cygwin).
