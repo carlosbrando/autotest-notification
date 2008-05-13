@@ -9,7 +9,6 @@ config/requirements.rb
 lib/autotest_notification.rb
 lib/autotest_notification/version.rb
 lib/autotest_notification/linux.rb
-lib/autotest_notification/mac.rb
 lib/autotest_notification/windows.rb
 lib/autotest_notification/cygwin.rb
 script/console
@@ -24,7 +23,6 @@ test/test_autotest_notification.rb
 test/test_helper.rb
 test/autotest_notification/test_cygwin.rb
 test/autotest_notification/test_linux.rb
-test/autotest_notification/test_mac.rb
 test/autotest_notification/test_windows.rb
 website/index.html
 website/index.txt
