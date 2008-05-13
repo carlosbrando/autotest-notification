@@ -2,6 +2,7 @@ $:.unshift(File.dirname(__FILE__))
 require 'autotest_notification/linux'
 require 'autotest_notification/mac'
 require 'autotest_notification/windows'
+require 'autotest_notification/mswin'
 
 module AutotestNotification
   FAIL    = -1
@@ -58,7 +59,9 @@ module AutotestNotification
         Linux.notify(title, msg, img)
       when /darwin/
         Mac.notify(title, msg, img, pri)
-      when /mswin|cygwin/
+      when /cygwin/
+        Cygwin.notify(title, msg, img)
+      when /mswin/
         Windows.notify(title, msg, img)
       end
     end
