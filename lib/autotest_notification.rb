@@ -51,7 +51,7 @@ module AutotestNotification
     def notify(title, msg, img = SUCCESS_IMAGE, pri = 0)
       case RUBY_PLATFORM
       when /linux/
-        notify_send(title, msg, img)
+        has_notify?? notify_send(title, msg, img) : kdialog(title, msg, img)
       when /darwin/
         growl(title, msg, img, pri)
       when /cygwin/
@@ -72,6 +72,14 @@ module AutotestNotification
 
     def notify_send(title, msg, img)
       system "notify-send -t #{EXPIRATION_IN_SECONDS * 1000} -i #{img} '#{title}' '#{msg}'"
+    end
+
+    def kdialog(title, msg, img)
+      system "kdialog --title '#{title}' --passivepopup '#{msg}' #{EXPIRATION_IN_SECONDS}"
+    end
+
+    def has_notify?
+      system "which notify-send 2> /dev/null"
     end
 
     def snarl(title, msg, img)
