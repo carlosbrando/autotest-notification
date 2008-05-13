@@ -2,28 +2,46 @@
 
 * http://github.com/carlosbrando/autotest-notification/
 
+
 == DESCRIPTION:
 
 This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.
 
+
 == REQUIREMENTS:
 
 * If you're using a Mac:
-		You need to have Growl and growlnotify installed on your machine.
-		
-		Download the Growl [http://growl.info/index.php] and install it like any other application on your Mac
-		
-		Then you must install the growlnotify.
-		
-		In your shell, cd to the directory on the Growl disk image containing growlnotify, and type ./install.sh.
-		That script will install growlnotify to /usr/local/bin and the manpage to /usr/local/man.
-		
-* If you're using Windows:
+    You need to have Growl and growlnotify installed on your machine.
+    
+    Download the Growl [http://growl.info/index.php] and install it like any other application on your Mac
+    
+    Then you must install the growlnotify.
+    
+    In your shell, cd to the directory on the Growl disk image containing growlnotify, and type ./install.sh.
+    That script will install growlnotify to /usr/local/bin and the manpage to /usr/local/man.
+
+    
+* If you're using Windows (with cygwin):
     You need to have Snarl and sncmd installed on your machine.
     
     Download Snarl [http://www.fullphat.net/] and install it like any other application on your machine.
     
-    Then download sncmd [http://www.k23productions.com/download.php?view.105] open the zip file and place the executable from the zip in any directory in windows PATH (for example c:\windows)
+    Then download sncmd [http://www.k23productions.com/download.php?view.105] open the zip file and place 
+    the executable from the zip in any directory in windows PATH (for example c:\windows).
+
+
+* If you're using Windows (without cygwin):
+    You need to have Snarl, diffutils and ruby-snarl installed on your machine.
+
+    Download Snarl [http://www.fullphat.net/] and install it like any other application on your machine.
+
+    Download DiffUtils for Windows [http://gnuwin32.sourceforge.net/packages/diffutils.htm] and follow the installation instructions on the site.
+    
+    Run in the command prompt: gem install ruby-snarl
+    
+    After all that. You must update the environment variable PATH with the path to the bin of diffutils.
+    It's the price that was paid for using Windows (try cygwin).
+    
     
 * If you're using Linux:
     You need to have libnotify binaries installed.
@@ -33,18 +51,25 @@ This gem set the autotest (ZenTest) to send messages to software as Growl, LibNo
     Other distributions may package it with other names, do a search for libnotify using your distribution package manager.
     
     If you use KDE and do not have libnotify-bin installed, it will try to use kdialog wich is part of KDE.
+    It also works if you have zenity installed.
+
 
 == INSTALL:
 
-	$ sudo gem install carlosbrando-autotest-notification --source=http://gems.github.com
-	
+  $ sudo gem install carlosbrando-autotest-notification --source=http://gems.github.com
+  
 Run it to let the notifier in automatic mode:
 
-	$ an-install
+  $ an-install
+
+In Windows without cygwin, it's necessary to install in the directory of the project:
+  
+  $ an-uninstall -p C:\projects\my_project
 
 To turn off the notifier:
-	
-	$ an-uninstall
+  
+  $ an-uninstall
+
 
 == Contributors
 
@@ -53,6 +78,7 @@ To turn off the notifier:
 * urubatan [http://www.urubatan.info/]
 * chjunior [http://tas.milk-it.net/]
 * daviscabral [http://blog.impactmedia.com.br/]
+
 
 == LICENSE:
 
