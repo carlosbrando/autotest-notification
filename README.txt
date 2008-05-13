@@ -18,7 +18,7 @@ This gem set the autotest (ZenTest) to send messages to software as Growl, LibNo
 		In your shell, cd to the directory on the Growl disk image containing growlnotify, and type ./install.sh.
 		That script will install growlnotify to /usr/local/bin and the manpage to /usr/local/man.
 		
-* If yoy're using a Windows:
+* If you're using a Windows:
     You need to have Snarl and sncmd installed on your machine.
     
     Download Snarl [http://www.fullphat.net/] and install it like any other application on your machine.
