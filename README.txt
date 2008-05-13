@@ -52,6 +52,7 @@ To turn off the notifier:
 * simpsomboy [http://alexandredasilva.wordpress.com/]
 * urubatan [http://www.urubatan.info/]
 * chjunior [http://tas.milk-it.net/]
+* daviscabral [http://blog.impactmedia.com.br/]
 
 == LICENSE:
 
