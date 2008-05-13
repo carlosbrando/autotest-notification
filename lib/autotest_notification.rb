@@ -2,7 +2,7 @@ $:.unshift(File.dirname(__FILE__))
 require 'autotest_notification/linux'
 require 'autotest_notification/mac'
 require 'autotest_notification/windows'
-require 'autotest_notification/mswin'
+require 'autotest_notification/cygwin'
 
 module AutotestNotification
   FAIL    = -1
