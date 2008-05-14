@@ -1,14 +1,17 @@
-= The Autotest Notification Gem
+The Autotest Notification Gem
+=============================
 
 * http://github.com/carlosbrando/autotest-notification/
 
 
-== DESCRIPTION:
+Description
+-----------
 
 This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.
 
 
-== REQUIREMENTS:
+Requirements
+------------
 
 Independent of operating system you are using, you must install the ZenTest:
 
@@ -61,7 +64,8 @@ Independent of operating system you are using, you must install the ZenTest:
     It also works if you have zenity installed.
 
 
-== INSTALL:
+Install
+-------
 
   $ sudo gem install carlosbrando-autotest-notification --source=http://gems.github.com
   
@@ -78,7 +82,8 @@ To turn off the notifier:
   $ an-uninstall
 
 
-== Contributors
+Contributors
+------------
 
 * carlosbrando [http://www.nomedojogo.com]
 * simpsomboy [http://alexandredasilva.wordpress.com]
@@ -88,7 +93,8 @@ To turn off the notifier:
 * tapajos [http://www.improveit.com.br/tapajos]
 
 
-== LICENSE:
+License
+-------
 
 (The MIT License)
 
