@@ -1,4 +1,5 @@
-= THE AUTOTEST NOTIFICATION GEM
+The Autotest Notification Gem
+=============================
 
 * http://github.com/carlosbrando/autotest-notification/
 
