@@ -47,6 +47,11 @@ class TestLinux < Test::Unit::TestCase
     AutotestNotification::Linux.expects(:system).with('which notify-send 2> /dev/null')
     AutotestNotification::Linux.has_notify?
   end
+
+  def test_has_kdialog?
+    AutotestNotification::Linux.expects(:system).with('which kdialog 2> /dev/null')
+    AutotestNotification::Linux.has_kdialog?
+  end
   
   private
   
