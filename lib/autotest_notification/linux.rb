@@ -4,9 +4,9 @@ module AutotestNotification
       def notify(title, msg, img)
         if has_notify?
           notify_send(title, msg, img)
-	      elsif has_zenity?
-	        zenity(title, msg, img)
-        else
+	elsif has_zenity?
+	  zenity(title, msg, img)
+        elsif has_kdialog?
           kdialog(title, msg, img)
         end
       end
@@ -20,9 +20,9 @@ module AutotestNotification
           system "kdialog --title '#{title}' --passivepopup '#{msg}' #{EXPIRATION_IN_SECONDS}"
         end
 
-	      def zenity(title, msg, img)
-	        system "zenity --info --text='#{msg}' --title='#{title}'"
-	      end
+	def zenity(title, msg, img)
+	  system "zenity --info --text='#{msg}' --title='#{title}'"
+	end
 
         def has_zenity?
           system "which zenity 2> /dev/null"
@@ -30,6 +30,10 @@ module AutotestNotification
 
         def has_notify?
           system "which notify-send 2> /dev/null"
+        end
+
+        def has_kdialog?
+          system "which kdialog 2> /dev/null"
         end
     end
   end
