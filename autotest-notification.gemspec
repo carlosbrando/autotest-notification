@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{autotest-notification}
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.specification_version = 2 if s.respond_to? :specification_version=
 
@@ -26,8 +26,10 @@ To turn off:
 }
   s.rdoc_options = ["--main", "README.txt"]
   s.require_paths = ["lib"]
-  s.rubyforge_project = %q{}
+  s.rubyforge_project = %q{autotest-notification}
   s.rubygems_version = %q{1.1.1}
   s.summary = %q{This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.}
   s.test_files = ["test/autotest_notification/test_cygwin.rb", "test/autotest_notification/test_linux.rb", "test/autotest_notification/test_mac.rb", "test/autotest_notification/test_windows.rb", "test/test_autotest_notification.rb", "test/test_helper.rb"]
+
+  s.add_dependency(%q<ZenTest>, [">= 3.9.2"])
 end
