@@ -1,4 +1,7 @@
-== 0.2.2 2008-05-13
+== 0.3.0
+	* If a test failed, the computer will speak. Only for Mac.
+
+* 0.2.2 2008-05-13
 	* Validating presence of KDialog; Fixing some identations.
 	* Adding some tests.
 

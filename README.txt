@@ -67,11 +67,11 @@ Independent of operating system you are using, you must install the ZenTest:
   
 Run it to let the notifier in automatic mode:
 
-  $ an-install
+  $ an-install [--speaking]
 
 In Windows without cygwin, it's necessary to install in the directory of the project:
   
-  $ an-install -p C:\projects\my_project
+  $ an-install --path=C:\projects\my_project
 
 To turn off the notifier:
   
