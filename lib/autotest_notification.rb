@@ -43,9 +43,9 @@ module AutotestNotification
       end
 
       if failures > 0 || errors > 0
-        notify "FAIL", msg, FAIL_IMAGE, 2
+        notify "FAIL", msg, FAIL_IMAGE, failures, 2
       else
-        notify "Pass", msg, SUCCESS_IMAGE
+        notify "Pass", msg, SUCCESS_IMAGE, failures
       end
 
       puts "\e[#{code}m#{'=' * 80}\e[0m\n\n"
@@ -53,12 +53,12 @@ module AutotestNotification
   end
 
   class << self
-    def notify(title, msg, img = SUCCESS_IMAGE, pri = 0)
+    def notify(title, msg, img = SUCCESS_IMAGE, failures = 0, pri = 0)
       case RUBY_PLATFORM
       when /linux/
         Linux.notify(title, msg, img)
       when /darwin/
-        Mac.notify(title, msg, img, pri)
+        Mac.notify(title, msg, img, failures, pri)
       when /cygwin/
         Cygwin.notify(title, msg, img)
       when /mswin/
