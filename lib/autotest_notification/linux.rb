@@ -26,8 +26,8 @@ module AutotestNotification
         system "zenity --info --text='#{msg}' --title='#{title}'"
       end
 
-      def talk(msg,failures)
-        system("/usr/bin/espeak '#{msg}'")  if SPEAKING && failures > 0
+      def talk(msg,failures) 
+        system("/usr/bin/espeak '#{failures} test#{'s' unless failures == 1} failed'")  if SPEAKING && failures > 0
       end
 
       def has_zenity?
