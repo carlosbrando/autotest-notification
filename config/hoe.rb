@@ -4,10 +4,12 @@ AUTHOR = "Carlos Brando, Rodrigo Urubatan, Alexandre da Silva, Carlos Júnior, D
 EMAIL = "eduardobrando@gmail.com"
 DESCRIPTION = "This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results."
 GEM_NAME = 'autotest-notification' # what ppl will type to install your gem
-RUBYFORGE_PROJECT = '' # The unix name for your project
+RUBYFORGE_PROJECT = nil # 'autotestnotific' # The unix name for your project
 HOMEPATH = "http://github.com/carlosbrando/autotest-notification/"
 DOWNLOAD_PATH = "http://github.com/carlosbrando/autotest-notification/tarball/master"
+
 EXTRA_DEPENDENCIES = [
+  ['ZenTest', '>= 3.9.2']
 #  ['activesupport', '>= 1.3.1']
 ]    # An array of rubygem dependencies [name, version]
 
@@ -61,7 +63,7 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
 
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
-  #p.extra_deps = EXTRA_DEPENDENCIES
+  p.extra_deps = EXTRA_DEPENDENCIES
 
     #p.spec_extras = {}    # A hash of extra values to set in the gemspec.
   end

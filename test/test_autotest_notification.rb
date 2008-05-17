@@ -4,9 +4,9 @@ class TestAutotestNotification < Test::Unit::TestCase
   
   def setup
     @title = "title"
-    @msg = "message"
+    @msg   = "message"
     @image = "image"
-    @pri = 1
+    @pri   = 1
   end
   
   def test_notify_when_os_is_cygwin

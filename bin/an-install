@@ -15,7 +15,8 @@ require 'ftools'
 # NOTE: the option -p/--path= is given as an example, and should probably be replaced in your application.
 
 OPTIONS = {
-  :path     => '~'
+  :path     => '~',
+  :speaking => false
 }
 MANDATORY_OPTIONS = %w(  )
 
@@ -28,11 +29,18 @@ Usage: #{File.basename($0)} [options]
 Options are:
 BANNER
   opts.separator ""
+  
   opts.on("-p", "--path=PATH", String,
           "The root path for selecting files",
           "Default: ~") { |OPTIONS[:path]| }
+          
+  opts.on("-s", "--speaking",
+           "If a test failed, the computer will speak.",
+           "Only for Mac.") { |OPTIONS[:speaking]| OPTIONS[:speaking] = true }
+          
   opts.on("-h", "--help",
           "Show this help message.") { puts opts; exit }
+          
   opts.parse!(ARGV)
 
   if MANDATORY_OPTIONS && MANDATORY_OPTIONS.find { |option| OPTIONS[option.to_sym].nil? }
@@ -44,7 +52,8 @@ path = OPTIONS[:path]
 
 f = File.new(File.expand_path(path) + "/.autotest",  "w")
 f.write "# ~.autotest\n"
-f.write "require 'autotest_notification'"
+f.write "require 'autotest_notification'\n"
+f.write("SPEAKING = #{OPTIONS[:speaking]}\n")
 f.close
 puts "\nAs from now all tests will be notified automatically."
 puts "" # a blank line

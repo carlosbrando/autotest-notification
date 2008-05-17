@@ -20,6 +20,7 @@ class TestLinux < Test::Unit::TestCase
   def test_notify_when_use_kdialog
     AutotestNotification::Linux.expects(:has_notify?).returns(false)
     AutotestNotification::Linux.expects(:has_zenity?).returns(false)
+    AutotestNotification::Linux.expects(:has_kdialog?).returns(true)
     verify_notify(:kdialog)
   end
   
@@ -46,6 +47,11 @@ class TestLinux < Test::Unit::TestCase
   def test_has_notify?
     AutotestNotification::Linux.expects(:system).with('which notify-send 2> /dev/null')
     AutotestNotification::Linux.has_notify?
+  end
+
+  def test_has_kdialog?
+    AutotestNotification::Linux.expects(:system).with('which kdialog 2> /dev/null')
+    AutotestNotification::Linux.has_kdialog?
   end
   
   private

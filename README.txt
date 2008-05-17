@@ -1,4 +1,4 @@
-= The Autotest Notification Gem
+= THE AUTOTEST NOTIFICATION GEM
 
 * http://github.com/carlosbrando/autotest-notification/
 
@@ -71,14 +71,14 @@ Run it to let the notifier in automatic mode:
 
 In Windows without cygwin, it's necessary to install in the directory of the project:
   
-  $ an-install -p C:\projects\my_project
+  $ an-install --path=C:\projects\my_project
 
 To turn off the notifier:
   
   $ an-uninstall
 
 
-== Contributors
+== CONTRIBUTORS:
 
 * carlosbrando [http://www.nomedojogo.com]
 * simpsomboy [http://alexandredasilva.wordpress.com]
