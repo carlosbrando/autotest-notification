@@ -60,6 +60,9 @@ Independent of operating system you are using, you must install the ZenTest:
     If you use KDE and do not have libnotify-bin installed, it will try to use kdialog wich is part of KDE.
     It also works if you have zenity installed.
 
+    If you want to be notified with voice of the test results, instal espeak too, it is not needed.
+    And when running an-install, pass a "-s" switch, when you do not want voices notifications anymore, just run it again without the "-s" switch.
+
 
 == INSTALL:
 
