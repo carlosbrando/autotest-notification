@@ -20,12 +20,12 @@ class TestAutotestNotification < Test::Unit::TestCase
   end
   
   def test_notify_when_os_is_linux
-    AutotestNotification::Linux.expects(:notify).with(@title, @msg, @image)
+    AutotestNotification::Linux.expects(:notify).with(@title, @msg, @image,@pri)
     verify_to("linux")
   end
   
   def test_notify_when_os_is_mac
-    Autotest::Growl.expects(:growl).with(@title, @msg, @pri, @image)
+    AutotestNotification::Mac.expects(:notify).with(@title, @msg, @image, @pri, 0)
     verify_to("darwin")
   end
   

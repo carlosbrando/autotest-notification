@@ -56,7 +56,7 @@ module AutotestNotification
     def notify(title, msg, img = SUCCESS_IMAGE, failures = 0, pri = 0)
       case RUBY_PLATFORM
       when /linux/
-        Linux.notify(title, msg, img)
+        Linux.notify(title, msg, img,failures)
       when /darwin/
         Mac.notify(title, msg, img, failures, pri)
       when /cygwin/

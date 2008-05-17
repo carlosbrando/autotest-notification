@@ -1,7 +1,7 @@
 module AutotestNotification
   class Linux
     class << self
-      def notify(title, msg, img)
+      def notify(title, msg, img,failures=0)
         if has_notify?
           notify_send(title, msg, img)
         elsif has_zenity?
@@ -9,7 +9,7 @@ module AutotestNotification
         elsif has_kdialog?
           kdialog(title, msg, img)
         end
-        talk(msg)
+        talk(msg,failures)
         true # true, cause we did everything we could
       end
 
@@ -26,12 +26,8 @@ module AutotestNotification
         system "zenity --info --text='#{msg}' --title='#{title}'"
       end
 
-      def talk(msg)
-        begin
-          f = File.new('/usr/bin/espeak')
-          system("/usr/bin/espeak '#{msg}'")  if SPEAKING && failures > 0
-        rescue
-        end
+      def talk(msg,failures)
+        system("/usr/bin/espeak '#{msg}'")  if SPEAKING && failures > 0
       end
 
       def has_zenity?
