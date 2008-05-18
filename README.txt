@@ -25,6 +25,8 @@ Independent of operating system you are using, you must install the ZenTest:
     In your shell, cd to the directory on the Growl disk image containing growlnotify, and type ./install.sh.
     That script will install growlnotify to /usr/local/bin and the manpage to /usr/local/man.
 
+    If you want to be notified with voice of the test results, when running an-install, pass a "-s" switch, when you do not want voices notifications anymore, just run it again without the "-s" switch.
+
     
 * If you're using Windows (with cygwin):
     You need to have Snarl and sncmd installed on your machine.
@@ -60,7 +62,7 @@ Independent of operating system you are using, you must install the ZenTest:
     If you use KDE and do not have libnotify-bin installed, it will try to use kdialog wich is part of KDE.
     It also works if you have zenity installed.
 
-    If you want to be notified with voice of the test results, instal espeak too, it is not needed.
+    If you want to be notified with voice of the test results, instal espeak [http://espeak.sourceforge.net/] too, it is not needed.
     And when running an-install, pass a "-s" switch, when you do not want voices notifications anymore, just run it again without the "-s" switch.
 
 
