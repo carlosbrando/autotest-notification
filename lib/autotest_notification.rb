@@ -1,4 +1,5 @@
 $:.unshift(File.dirname(__FILE__))
+
 require 'autotest_notification/linux'
 require 'autotest_notification/mac'
 require 'autotest_notification/windows'
@@ -6,8 +7,8 @@ require 'autotest_notification/cygwin'
 
 module AutotestNotification
   FAIL    = -1
-  PENDING = 0
-  SUCCESS = 1
+  PENDING =  0
+  SUCCESS =  1
 
   EXPIRATION_IN_SECONDS = 3
 
@@ -71,4 +72,3 @@ module AutotestNotification
     end
   end
 end
-

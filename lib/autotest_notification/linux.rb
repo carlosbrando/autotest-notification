@@ -1,7 +1,8 @@
 module AutotestNotification
   class Linux
     class << self
-      def notify(title, msg, img,failures=0)
+
+      def notify(title, msg, img, failures=0)
         if has_notify?
           notify_send(title, msg, img)
         elsif has_zenity?
@@ -9,39 +10,42 @@ module AutotestNotification
         elsif has_kdialog?
           kdialog(title, msg, img)
         end
-        talk(msg,failures)
-        true # true, cause we did everything we could
+
+        talk(msg, failures)
       end
 
       protected
-      def notify_send(title, msg, img)
-        system "notify-send -t #{EXPIRATION_IN_SECONDS * 1000} -i #{img} '#{title}' '#{msg}'"
-      end
+        def notify_send(title, msg, img)
+          system "notify-send -t #{EXPIRATION_IN_SECONDS * 1000} -i #{img} '#{title}' '#{msg}'"
+        end
 
-      def kdialog(title, msg, img)
-        system "kdialog --title '#{title}' --passivepopup '#{msg}' #{EXPIRATION_IN_SECONDS}"
-      end
+        def kdialog(title, msg, img)
+          system "kdialog --title '#{title}' --passivepopup '#{msg}' #{EXPIRATION_IN_SECONDS}"
+        end
 
-      def zenity(title, msg, img)
-        system "zenity --info --text='#{msg}' --title='#{title}'"
-      end
+        def zenity(title, msg, img)
+          system "zenity --info --text='#{msg}' --title='#{title}'"
+        end
 
-      def talk(msg,failures) 
-        system("/usr/bin/espeak '#{failures} test#{'s' unless failures == 1} failed'")  if SPEAKING && failures > 0
-      end
+        def talk(msg, failures)
+          # TODO: check if user has espeak installed
+          begin
+            system("/usr/bin/espeak '#{failures} test#{'s' unless failures == 1} failed'") if SPEAKING && failures > 0
+          rescue
+          end
+        end
 
-      def has_zenity?
-        system "which zenity 2> /dev/null"
-      end
+        def has_zenity?
+          system "which zenity 2> /dev/null"
+        end
 
-      def has_notify?
-        system "which notify-send 2> /dev/null"
-      end
+        def has_notify?
+          system "which notify-send 2> /dev/null"
+        end
 
-      def has_kdialog?
-        system "which kdialog 2> /dev/null"
-      end
+        def has_kdialog?
+          system "which kdialog 2> /dev/null"
+        end
     end
   end
 end
-
