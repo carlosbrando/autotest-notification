@@ -33,14 +33,18 @@ module AutotestNotification
 
       # Shared
       failures   = result =~ /(\d+) failure/ ? $1.to_i : 0
-
+      
       code = 32
       msg = if result =~ /test/
         code = 31 if failures > 0 || errors > 0
         "#{pluralize('test', tests)}, #{pluralize('assertion', assertions)}, #{pluralize('failure', failures)}, #{pluralize('error', errors)}"
-      else
+      elsif result =~ /example/
         code = (failures > 0) ? 31 : (pendings > 0) ? 33 : 32
         "#{pluralize('example', examples)}, #{pluralize('failure', failures)}, #{pendings} pending"
+      else
+        code = 31
+        failures = 1
+        "1 exception occurred"
       end
 
       if failures > 0 || errors > 0

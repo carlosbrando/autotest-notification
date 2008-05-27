@@ -1,4 +1,7 @@
-== 1.1.0
+== 1.1.1 
+	* Changed to speak when passing the tests after a series of failures. Only in Mac.
+	
+* 1.1.0
 	* Now speaking in Linux too.
 
 * 0.3.0
