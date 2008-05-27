@@ -9,8 +9,8 @@ module AutotestNotification
         if SPEAKING && failures > 0
           system("say #{failures} test#{'s' unless failures == 1} failed.")
           @last_test_failed = true
-        else
-          system("say All tests passed successfully.") if @last_test_failed
+        elsif @last_test_failed
+          system("say All tests passed successfully.")
           @last_test_failed = false
         end
       end
