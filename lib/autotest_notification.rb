@@ -1,56 +1,36 @@
 $:.unshift(File.dirname(__FILE__))
-
-require 'autotest_notification/linux'
-require 'autotest_notification/mac'
-require 'autotest_notification/windows'
-require 'autotest_notification/cygwin'
+%w{ linux mac windows cygwin }.each { |x| require "autotest_notification/#{x}" }
 
 module AutotestNotification
-  FAIL    = -1
-  PENDING =  0
-  SUCCESS =  1
-
-  EXPIRATION_IN_SECONDS = 3
-
   IMAGES_DIRECTORY = File.expand_path(File.dirname(__FILE__) + "/../images/")
   SUCCESS_IMAGE    = "#{IMAGES_DIRECTORY}/pass.png"
   FAIL_IMAGE       = "#{IMAGES_DIRECTORY}/fail.png"
 
-  Autotest.add_hook :ran_command do |at|
+  EXPIRATION_IN_SECONDS = 3
 
+  Autotest.add_hook :ran_command do |at|
     result = at.results.is_a?(Array) ? at.results.last : at.results.split("\n").last
 
     if result
+      %w{ test assertion error example pending failure }.each { |x| instance_variable_set "@#{x}s", result[/(\d+) #{x}/, 1].to_i }
 
-      # Test::Unit
-      tests      = result =~ /(\d+) test/ ? $1.to_i : 0
-      assertions = result =~ /(\d+) assertion/ ? $1.to_i : 0
-      errors     = result =~ /(\d+) error/ ? $1.to_i : 0
-
-      # RSpec
-      examples   = result =~ /(\d+) example/ ? $1.to_i : 0
-      pendings   = result =~ /(\d+) pending/ ? $1.to_i : 0
-
-      # Shared
-      failures   = result =~ /(\d+) failure/ ? $1.to_i : 0
-      
-      code = 32
-      msg = if result =~ /test/
-        code = 31 if failures > 0 || errors > 0
-        "#{pluralize('test', tests)}, #{pluralize('assertion', assertions)}, #{pluralize('failure', failures)}, #{pluralize('error', errors)}"
-      elsif result =~ /example/
-        code = (failures > 0) ? 31 : (pendings > 0) ? 33 : 32
-        "#{pluralize('example', examples)}, #{pluralize('failure', failures)}, #{pendings} pending"
+      case result
+      when /test/
+        code = 31 if @failures > 0 || @errors > 0
+        msg  = unit_test_message(@tests, @assertions, @failures, @errors)
+      when /example/
+        code = (@failures > 0) ? 31 : (@pendings > 0) ? 33 : 32
+        msg  = rspec_message(@examples, @failures, @pendings)
       else
         code = 31
-        failures = 1
-        "1 exception occurred"
+        msg  = "1 exception occurred"
+        @failures = 1
       end
 
-      if failures > 0 || errors > 0
-        notify "FAIL", msg, FAIL_IMAGE, failures, 2
+      if @failures > 0 || @errors > 0
+        notify "FAIL", msg, FAIL_IMAGE, @failures + @errors, 2
       else
-        notify "Pass", msg, SUCCESS_IMAGE, failures
+        notify "Pass", msg, SUCCESS_IMAGE
       end
 
       puts "\e[#{code}m#{'=' * 80}\e[0m\n\n"
@@ -61,7 +41,7 @@ module AutotestNotification
     def notify(title, msg, img = SUCCESS_IMAGE, failures = 0, pri = 0)
       case RUBY_PLATFORM
       when /linux/
-        Linux.notify(title, msg, img,failures)
+        Linux.notify(title, msg, img, failures)
       when /darwin/
         Mac.notify(title, msg, img, failures, pri)
       when /cygwin/
@@ -73,6 +53,14 @@ module AutotestNotification
 
     def pluralize(text, number)
       "#{number} #{text}#{'s' if number != 1}"
+    end
+
+    def unit_test_message(tests, assertions, failures, errors)
+      "#{pluralize('test', tests)}, #{pluralize('assertion', assertions)}, #{pluralize('failure', failures)}, #{pluralize('error', errors)}"
+    end
+
+    def rspec_message(examples, failures, pendings)
+      "#{pluralize('example', examples)}, #{pluralize('failure', failures)}, #{pendings} pending"
     end
   end
 end
