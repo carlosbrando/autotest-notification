@@ -36,3 +36,10 @@ bin/an-uninstall
 images/pass.png
 images/fail.png
 autotest-notification.gemspec
+images/doom/doom_1.png
+images/doom/doom_2.png
+images/doom/doom_3.png
+images/doom/doom_4.png
+images/doom/doom_5.png
+images/doom/doom_6.png
+images/doom/doom_7.png
