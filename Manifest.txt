@@ -12,6 +12,7 @@ lib/autotest_notification/linux.rb
 lib/autotest_notification/windows.rb
 lib/autotest_notification/cygwin.rb
 lib/autotest_notification/mac.rb
+lib/autotest_notification/doom.rb
 script/console
 script/destroy
 script/generate
@@ -36,10 +37,10 @@ bin/an-uninstall
 images/pass.png
 images/fail.png
 autotest-notification.gemspec
+images/doom/doom_0.png
 images/doom/doom_1.png
 images/doom/doom_2.png
 images/doom/doom_3.png
 images/doom/doom_4.png
 images/doom/doom_5.png
 images/doom/doom_6.png
-images/doom/doom_7.png

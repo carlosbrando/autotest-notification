@@ -16,7 +16,8 @@ require 'ftools'
 
 OPTIONS = {
   :path     => '~',
-  :speaking => false
+  :speaking => false,
+  :doom => false
 }
 MANDATORY_OPTIONS = %w(  )
 
@@ -35,8 +36,12 @@ BANNER
           "Default: ~") { |OPTIONS[:path]| }
           
   opts.on("-s", "--speaking",
-           "If a test failed, the computer will speak.",
-           "Only for Mac.") { |OPTIONS[:speaking]| OPTIONS[:speaking] = true }
+          "If a test failed, the computer will speak.",
+          "For all plataforms.") { |OPTIONS[:speaking]| OPTIONS[:speaking] = true }
+          
+  opts.on("-d", "--doom",
+          "Special Doom Edition.",
+          "Only for Mac.") { |OPTIONS[:doom]| OPTIONS[:doom] = true }
           
   opts.on("-h", "--help",
           "Show this help message.") { puts opts; exit }
@@ -54,6 +59,7 @@ f = File.new(File.expand_path(path) + "/.autotest",  "w")
 f.write "# ~.autotest\n"
 f.write "require 'autotest_notification'\n"
 f.write("SPEAKING = #{OPTIONS[:speaking]}\n")
+f.write("DOOM_EDITION = #{OPTIONS[:doom]}\n")
 f.close
 puts "\nAs from now all tests will be notified automatically."
 puts "" # a blank line

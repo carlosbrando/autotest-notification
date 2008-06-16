@@ -1,11 +1,11 @@
 $:.unshift(File.dirname(__FILE__))
-%w{ linux mac windows cygwin }.each { |x| require "autotest_notification/#{x}" }
+%w{ linux mac windows cygwin doom }.each { |x| require "autotest_notification/#{x}" }
 
 module AutotestNotification
   IMAGES_DIRECTORY = File.expand_path(File.dirname(__FILE__) + "/../images/")
-  SUCCESS_IMAGE    = "#{IMAGES_DIRECTORY}/doom/doom_1.png"
-  FAIL_IMAGE       = "#{IMAGES_DIRECTORY}/doom/doom_7.png"
-  
+  SUCCESS_IMAGE    = "#{IMAGES_DIRECTORY}/pass.png"
+  FAIL_IMAGE       = "#{IMAGES_DIRECTORY}/fail.png"
+
   EXPIRATION_IN_SECONDS = 3
 
   Autotest.add_hook :ran_command do |at|
@@ -28,9 +28,9 @@ module AutotestNotification
       end
 
       if @failures > 0 || @errors > 0
-        notify "FAIL", msg, FAIL_IMAGE, @failures + @errors, 2
+        notify "FAIL", msg, FAIL_IMAGE, @tests + @examples, @failures + @errors, 2
       else
-        notify "Pass", msg, SUCCESS_IMAGE
+        notify "Pass", msg, SUCCESS_IMAGE, @tests + @examples
       end
 
       puts "\e[#{code}m#{'=' * 80}\e[0m\n\n"
@@ -38,12 +38,12 @@ module AutotestNotification
   end
 
   class << self
-    def notify(title, msg, img = SUCCESS_IMAGE, failures = 0, pri = 0)
+    def notify(title, msg, img = SUCCESS_IMAGE, total = 1, failures = 0, pri = 0)
       case RUBY_PLATFORM
       when /linux/
         Linux.notify(title, msg, img, failures)
       when /darwin/
-        Mac.notify(title, msg, img, failures, pri)
+        Mac.notify(title, msg, img, total, failures, pri)
       when /cygwin/
         Cygwin.notify(title, msg, img)
       when /mswin/
