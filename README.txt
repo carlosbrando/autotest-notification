@@ -83,6 +83,10 @@ To turn off the notifier:
   $ an-uninstall
 
 
+== Special Doom Edition
+
+	$ an-install --doom
+
 == CONTRIBUTORS:
 
 * carlosbrando [http://www.nomedojogo.com]
