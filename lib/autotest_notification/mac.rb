@@ -1,13 +1,9 @@
 module AutotestNotification
   class Mac
-
     @last_test_failed = false
 
     class << self
-
-      def notify(title, msg, img, total = 1, failures = 0, pri = 0)
-        img = Doom.image(total, failures) if DOOM_EDITION
-        
+      def notify(title, msg, img, failures = 0, pri = 0)
         system "growlnotify -n autotest --image #{img} -p #{pri} -m '#{msg}' #{title}"
         say(failures) if SPEAKING
       end
@@ -21,7 +17,6 @@ module AutotestNotification
           @last_test_failed = false
         end
       end
-
     end
   end
 end
