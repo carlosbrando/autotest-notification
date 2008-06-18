@@ -95,6 +95,7 @@ To turn off the notifier:
 * chjunior [http://tas.milk-it.net]
 * daviscabral [http://blog.impactmedia.com.br]
 * tapajos [http://www.improveit.com.br/tapajos]
+* tchandy [http://tchandy.wordpress.com]
 
 
 == LICENSE:
