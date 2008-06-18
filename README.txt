@@ -85,7 +85,7 @@ To turn off the notifier:
 
 == Special Doom Edition
 
-	$ an-install --doom
+	$ an-install --doom --speaking
 
 == CONTRIBUTORS:
 
