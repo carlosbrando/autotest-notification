@@ -55,18 +55,19 @@ end
 
 path = OPTIONS[:path]
 
-fp = File.expand_path(path)
-if File.exists?(fp + "/.autotest")
- FileUtils.cp fp + "/.autotest", fp + '/.autotest.backup' 
- puts ""
- puts "You Already have a .autotest file, copying to " + path + "/.autotest.backup"
+autotest_path = File.expand_path(path)
+
+if File.exists?("#{autotest_path}/.autotest")
+  puts "\nYou Already have a .autotest file, renamed to .autotest.backup"
+  FileUtils.cp "#{autotest_path}/.autotest", "#{autotest_path}/.autotest.backup"
 end
 
-f = File.new(File.expand_path(path) + "/.autotest",  "w")
+f = File.new("#{autotest_path}/.autotest",  "w")
 f.write "# ~.autotest\n"
 f.write "require 'autotest_notification'\n"
 f.write("SPEAKING = #{OPTIONS[:speaking]}\n")
 f.write("DOOM_EDITION = #{OPTIONS[:doom]}\n")
 f.close
+
 puts "\nAs from now all tests will be notified automatically."
 puts "" # a blank line
