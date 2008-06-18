@@ -46,7 +46,7 @@ module AutotestNotification
       when /linux/
         Linux.notify(title, msg, img, failures)
       when /darwin/
-        Mac.notify(title, msg, img, failures, pri)
+        Mac.notify(title, msg, img, total, failures, pri)
       when /cygwin/
         Cygwin.notify(title, msg, img)
       when /mswin/

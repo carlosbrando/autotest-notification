@@ -34,6 +34,7 @@ website/stylesheets/screen.css
 website/template.html.erb
 bin/an-install
 bin/an-uninstall
+bin/playsound
 images/pass.png
 images/fail.png
 autotest-notification.gemspec
@@ -44,3 +45,10 @@ images/doom/doom_3.png
 images/doom/doom_4.png
 images/doom/doom_5.png
 images/doom/doom_6.png
+sounds/doom/0.wav
+sounds/doom/1.wav
+sounds/doom/2.wav
+sounds/doom/3.wav
+sounds/doom/4.wav
+sounds/doom/5.wav
+sounds/doom/6.wav
