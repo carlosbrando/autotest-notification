@@ -98,6 +98,7 @@ To turn off the notifier:
 * daviscabral [http://blog.impactmedia.com.br]
 * tapajos [http://www.improveit.com.br/tapajos]
 * tchandy [http://tchandy.wordpress.com]
+* ozsantana [http://blog.iconcreative.net/]
 
 
 == LICENSE:
