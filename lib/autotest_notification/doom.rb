@@ -9,6 +9,10 @@ module AutotestNotification
         `#{File.expand_path(File.dirname(__FILE__) + "/../../bin/")}/playsound #{File.expand_path(File.dirname(__FILE__) + "/../../sounds/doom/")}/#{percent(total, failures)}.wav`
       end
 
+      def mplayer_sound(total, failures)
+        system("/usr/bin/mplayer #{File.expand_path(File.dirname(__FILE__) + "../../../sounds/doom/")}/#{percent(total, failures)}.wav")
+      end
+
       private
         def percent(total, failures)
           percent = failures.zero? ? 0 : ((5 * failures) / total) + 1

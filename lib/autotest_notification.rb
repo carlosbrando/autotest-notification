@@ -44,7 +44,7 @@ module AutotestNotification
 
       case RUBY_PLATFORM
       when /linux/
-        Linux.notify(title, msg, img, failures)
+        Linux.notify(title, msg, img, total, failures)
       when /darwin/
         Mac.notify(title, msg, img, total, failures, pri)
       when /cygwin/

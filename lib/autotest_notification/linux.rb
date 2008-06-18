@@ -2,7 +2,7 @@ module AutotestNotification
   class Linux
     class << self
 
-      def notify(title, msg, img, failures=0)
+      def notify(title, msg, img, total=1, failures=0)
         if has_notify?
           notify_send(title, msg, img)
         elsif has_zenity?
@@ -11,7 +11,7 @@ module AutotestNotification
           kdialog(title, msg, img)
         end
 
-        talk(msg, failures)
+        talk(msg, total, failures) if SPEAKING
       end
 
       protected
@@ -27,10 +27,14 @@ module AutotestNotification
           system "zenity --info --text='#{msg}' --title='#{title}'"
         end
 
-        def talk(msg, failures)
-          # TODO: check if user has espeak installed
+        def talk(msg, total, failures)
+          # TODO: check if user has espeak and mplayer installed
           begin
-            system("/usr/bin/espeak '#{failures} test#{'s' unless failures == 1} failed'") if SPEAKING && failures > 0
+            if failures > 0
+              DOOM_EDITION ? Doom.mplayer_sound(total, failures) : system("/usr/bin/espeak '#{failures} test#{'s' unless failures == 1} failed'")
+            else
+              DOOM_EDITION ? Doom.mplayer_sound(total, failures) : system("/usr/bin/espeak 'All tests passed successfully'")
+            end
           rescue
           end
         end
