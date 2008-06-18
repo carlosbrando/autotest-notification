@@ -2,7 +2,7 @@ module AutotestNotification
   class Linux
     class << self
 
-      def notify(title, msg, img, total=1, failures=0)
+      def notify(title, msg, img, total = 1, failures = 0)
         if has_notify?
           notify_send(title, msg, img)
         elsif has_zenity?
@@ -11,10 +11,23 @@ module AutotestNotification
           kdialog(title, msg, img)
         end
 
-        talk(msg, total, failures) if SPEAKING
+        say(total, failures) if SPEAKING
       end
 
       protected
+
+        def has_notify?
+          system "which notify-send 2> /dev/null"
+        end
+      
+        def has_kdialog?
+          system "which kdialog 2> /dev/null"
+        end
+      
+        def has_zenity?
+          system "which zenity 2> /dev/null"
+        end
+        
         def notify_send(title, msg, img)
           system "notify-send -t #{EXPIRATION_IN_SECONDS * 1000} -i #{img} '#{title}' '#{msg}'"
         end
@@ -27,29 +40,16 @@ module AutotestNotification
           system "zenity --info --text='#{msg}' --title='#{title}'"
         end
 
-        def talk(msg, total, failures)
-          # TODO: check if user has espeak and mplayer installed
-          begin
-            if failures > 0
-              DOOM_EDITION ? Doom.mplayer_sound(total, failures) : system("/usr/bin/espeak '#{failures} test#{'s' unless failures == 1} failed'")
-            else
-              DOOM_EDITION ? Doom.mplayer_sound(total, failures) : system("/usr/bin/espeak 'All tests passed successfully'")
-            end
-          rescue
+        def say(total, failures)
+          if failures > 0
+            DOOM_EDITION ? Doom.play_sound(total, failures) : system("/usr/bin/espeak '#{failures} test#{'s' unless failures == 1} failed'")
+          else
+            DOOM_EDITION ? Doom.play_sound(total, failures) : system("/usr/bin/espeak 'All tests passed successfully'")
           end
+        rescue
+          puts "You need the #{DOOM_EDITION ? 'mplayer' : 'espeak'} installed to hear the sounds."
         end
-
-        def has_zenity?
-          system "which zenity 2> /dev/null"
-        end
-
-        def has_notify?
-          system "which notify-send 2> /dev/null"
-        end
-
-        def has_kdialog?
-          system "which kdialog 2> /dev/null"
-        end
+        
     end
   end
 end

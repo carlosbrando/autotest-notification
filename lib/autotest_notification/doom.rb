@@ -6,11 +6,14 @@ module AutotestNotification
       end
 
       def play_sound(total, failures)
-        `#{File.expand_path(File.dirname(__FILE__) + "/../../bin/")}/playsound #{File.expand_path(File.dirname(__FILE__) + "/../../sounds/doom/")}/#{percent(total, failures)}.wav`
-      end
-
-      def mplayer_sound(total, failures)
-        system("/usr/bin/mplayer #{File.expand_path(File.dirname(__FILE__) + "../../../sounds/doom/")}/#{percent(total, failures)}.wav")
+        sound_file = "#{File.expand_path(File.dirname(__FILE__) + "/../../sounds/doom/")}/#{percent(total, failures)}.wav"
+        
+        case RUBY_PLATFORM
+        when /darwin/
+          `#{File.expand_path(File.dirname(__FILE__) + "/../../bin/")}/playsound #{sound_file}`
+        when /linux/
+          system("/usr/bin/mplayer #{sound_file}")
+        end
       end
 
       private
