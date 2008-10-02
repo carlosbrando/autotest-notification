@@ -37,6 +37,7 @@ bin/an-uninstall
 bin/playsound
 images/pass.png
 images/fail.png
+images/pending.png
 autotest-notification.gemspec
 images/doom/doom_0.png
 images/doom/doom_1.png

@@ -89,6 +89,10 @@ To turn off the notifier:
 
 	$ an-install --doom --speaking
 
+== Showing a yellow warning image when there are no errors/failures but there are pending specs
+
+	$ an-install --pending
+
 == CONTRIBUTORS:
 
 * carlosbrando [http://www.nomedojogo.com]
@@ -99,6 +103,7 @@ To turn off the notifier:
 * tapajos [http://www.improveit.com.br/tapajos]
 * tchandy [http://tchandy.wordpress.com]
 * ozsantana [http://blog.iconcreative.net/]
+* lucasuyezu [http://xucros.com]
 
 
 == LICENSE:

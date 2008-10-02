@@ -5,6 +5,7 @@ module AutotestNotification
   IMAGES_DIRECTORY = File.expand_path(File.dirname(__FILE__) + "/../images/")
   SUCCESS_IMAGE    = "#{IMAGES_DIRECTORY}/pass.png"
   FAIL_IMAGE       = "#{IMAGES_DIRECTORY}/fail.png"
+  PENDING_IMAGE    = "#{IMAGES_DIRECTORY}/pending.png"
 
   EXPIRATION_IN_SECONDS = 3
 
@@ -29,6 +30,8 @@ module AutotestNotification
 
       if @failures > 0 || @errors > 0
         notify "FAIL", msg, FAIL_IMAGE, @tests + @examples, @failures + @errors, 2
+      elsif PENDING && @pendings > 0
+        notify "Pending", msg, PENDING_IMAGE, @tests + @examples, @failures + @errors, 2
       else
         notify "Pass", msg, SUCCESS_IMAGE, @tests + @examples
       end
