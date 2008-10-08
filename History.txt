@@ -1,3 +1,8 @@
+1.6.0 - Oct 08, 2008
+  * Buuf Edition - display Buuf icons by Mattahan [http://mattahan.deviantart.com] (samflores)
+  * Added --sticky flag to an-install to keep notifications on screen in case of errors/failures or pending specs (samflores)
+  * Pending notifications now have a priority different from Passed and Failled notifications, to allow set diff color with Growl (samflores)
+
 1.5.0 - Oct 02, 2008
 	* If an-install is run with --pending, shows a yellow warning when there are no errors/failures but there are pending specs. (lucasuyezu)
 
