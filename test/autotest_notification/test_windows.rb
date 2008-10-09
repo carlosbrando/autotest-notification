@@ -9,5 +9,4 @@ class TestWindows < Test::Unit::TestCase
     Snarl.expects(:show_message).with("title", "msg", "image")
     AutotestNotification::Windows.notify("title", "msg", "image")
   end
-  
 end

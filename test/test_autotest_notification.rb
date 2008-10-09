@@ -6,11 +6,14 @@ class TestAutotestNotification < Test::Unit::TestCase
     @title    = "title"
     @msg      = "message"
     @image    = "image"
-    @total    = 2
-    @failures = 1
-    @priority = 1
+    @priority = 0
+    @total    = 0
+    @failures = 0
     
-    AutotestNotification.const_set(:DOOM_EDITION, false) unless Object.const_defined?(:DOOM_EDITION)
+    AutotestNotification.const_set :DOOM_EDITION, false
+    AutotestNotification.const_set :SPEAKING, false
+    AutotestNotification.const_set :STICKY, false
+    AutotestNotification.const_set :BUUF, false
   end
   
   def test_notify_when_os_is_cygwin
@@ -36,8 +39,7 @@ class TestAutotestNotification < Test::Unit::TestCase
 private
 
   def verify_to(so)
-    AutotestNotification.const_set "RUBY_PLATFORM", so
+    AutotestNotification.const_set :RUBY_PLATFORM, so
     AutotestNotification.notify(@title, @msg, @image, @total, @failures, @priority)
   end
-  
 end

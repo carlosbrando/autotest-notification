@@ -89,6 +89,10 @@ To turn off the notifier:
 
 	$ an-install --doom --speaking
 
+== Buuf Edition - Display Buuf icons by Mattahan [http://mattahan.deviantart.com]
+
+	$ an-install --buuf
+
 == Showing a yellow warning image when there are no errors/failures but there are pending specs
 
 	$ an-install --pending
