@@ -10,10 +10,9 @@ class TestAutotestNotification < Test::Unit::TestCase
     @total    = 0
     @failures = 0
     
-    AutotestNotification.const_set :DOOM_EDITION, false
-    AutotestNotification.const_set :SPEAKING, false
-    AutotestNotification.const_set :STICKY, false
-    AutotestNotification.const_set :BUUF, false
+    %w( DOOM_EDITION SPEAKING STICKY BUUF ).each do |c|
+      AutotestNotification.const_set(c.to_sym, false) unless AutotestNotification.const_defined?(c.to_sym)
+    end
   end
   
   def test_notify_when_os_is_cygwin

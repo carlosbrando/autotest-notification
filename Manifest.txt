@@ -1,3 +1,4 @@
+autotest-notification.gemspec
 History.txt
 License.txt
 Manifest.txt
@@ -13,6 +14,7 @@ lib/autotest_notification/windows.rb
 lib/autotest_notification/cygwin.rb
 lib/autotest_notification/mac.rb
 lib/autotest_notification/doom.rb
+lib/autotest_notification/buuf.rb
 script/console
 script/destroy
 script/generate
@@ -38,7 +40,9 @@ bin/playsound
 images/pass.png
 images/fail.png
 images/pending.png
-autotest-notification.gemspec
+images/buuf/fail.png
+images/buuf/pass.png
+images/buuf/pending.png
 images/doom/doom_0.png
 images/doom/doom_1.png
 images/doom/doom_2.png
