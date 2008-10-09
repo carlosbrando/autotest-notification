@@ -4,8 +4,8 @@ module AutotestNotification
 
     class << self
       
-      def notify(title, msg, img, total = 1, failures = 0, pri = 0)
-        system "growlnotify -n autotest --image #{img} #{'-s ' if ((failures > 0) and STICKY)}-p #{pri} -m '#{msg}' -t #{title}"
+      def notify(title, msg, img, total = 1, failures = 0, priority = 0)
+        system "growlnotify -n autotest --image #{img} #{'-s ' if ((failures > 0) and STICKY)}-p #{priority} -m '#{msg}' -t #{title}"
         say(total, failures) if SPEAKING
       end
 
