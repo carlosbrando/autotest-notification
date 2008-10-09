@@ -1,7 +1,4 @@
-module AutotestNotification
-  
-  DOOM_EDITION = false
-  
+module AutotestNotification  
   class Doom
     class << self
       def image(total, failures)
@@ -10,7 +7,7 @@ module AutotestNotification
 
       def play_sound(total, failures)
         sound_file = "#{File.expand_path(File.dirname(__FILE__) + "/../../sounds/doom/")}/#{percent(total, failures)}.wav"
-        
+
         case RUBY_PLATFORM
         when /darwin/
           `#{File.expand_path(File.dirname(__FILE__) + "/../../bin/")}/playsound #{sound_file}`
@@ -24,5 +21,5 @@ module AutotestNotification
           percent = failures.zero? ? 0 : ((5 * failures) / total) + 1
         end
     end
-  end
+  end  
 end

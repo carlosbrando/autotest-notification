@@ -41,7 +41,7 @@ module AutotestNotification
   end
 
   class << self
-    def notify(title, msg, img = SUCCESS_IMAGE, total = 1, failures = 0, pri = 0)
+    def notify(title, msg, img = SUCCESS_IMAGE, total = 1, failures = 0, priority = 0)
 
       img = Doom.image(total, failures) if DOOM_EDITION
 
@@ -49,7 +49,7 @@ module AutotestNotification
       when /linux/
         Linux.notify(title, msg, img, total, failures)
       when /darwin/
-        Mac.notify(title, msg, img, total, failures, pri)
+        Mac.notify(title, msg, img, total, failures, priority)
       when /cygwin/
         Cygwin.notify(title, msg, img)
       when /mswin/
