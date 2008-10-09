@@ -29,11 +29,11 @@ module AutotestNotification
       end
 
       if @failures > 0 || @errors > 0
-        notify "FAIL", msg, (BUUF ? "#{IMAGES_DIRECTORY}/buuf/fail.png" : FAIL_IMAGE), @tests + @examples, @failures + @errors, 2
+        notify "FAIL", msg, FAIL_IMAGE, @tests + @examples, @failures + @errors, 2
       elsif PENDING && @pendings > 0
-        notify "Pending", msg, (BUUF ? "#{IMAGES_DIRECTORY}/buuf/pending.png" : PENDING_IMAGE), @tests + @examples, @failures + @errors, 1
+        notify "Pending", msg, PENDING_IMAGE, @tests + @examples, @failures + @errors, 1
       else
-        notify "Pass", msg, (BUUF ? "#{IMAGES_DIRECTORY}/buuf/pass.png" : SUCCESS_IMAGE), @tests + @examples, 0, -2
+        notify "Pass", msg, SUCCESS_IMAGE, @tests + @examples, 0, -2
       end
 
       puts "\e[#{code}m#{'=' * 80}\e[0m\n\n"
@@ -44,6 +44,7 @@ module AutotestNotification
     def notify(title, msg, img = SUCCESS_IMAGE, total = 1, failures = 0, pri = 0)
 
       img = Doom.image(total, failures) if DOOM_EDITION
+      img = Buuf.image(title.downcase) if BUUF
 
       case RUBY_PLATFORM
       when /linux/

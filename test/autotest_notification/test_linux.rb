@@ -4,23 +4,24 @@ class TestLinux < Test::Unit::TestCase
 
   def setup
     turn_methods_public AutotestNotification::Linux
+    AutotestNotification.const_set :DOOM_EDITION, false
+    AutotestNotification.const_set :SPEAKING, false
+    AutotestNotification.const_set :STICKY, false
+    AutotestNotification.const_set :BUUF, false
   end
 
   def test_notify_when_use_notify_without_speak
-    Object.const_set :SPEAKING, false
     AutotestNotification::Linux.expects(:has_notify?).returns(true)
     verify_notify(:notify_send)
   end
 
   def test_notify_when_use_zenity_without_speak
-    Object.const_set :SPEAKING, false
     AutotestNotification::Linux.expects(:has_notify?).returns(false)
     AutotestNotification::Linux.expects(:has_zenity?).returns(true)
     verify_notify(:zenity)
   end
 
   def test_notify_when_use_kdialog_without_speak
-    Object.const_set :SPEAKING, false
     AutotestNotification::Linux.expects(:has_notify?).returns(false)
     AutotestNotification::Linux.expects(:has_zenity?).returns(false)
     AutotestNotification::Linux.expects(:has_kdialog?).returns(true)
@@ -28,14 +29,14 @@ class TestLinux < Test::Unit::TestCase
   end
 
   def test_notify_when_use_notify_with_speak
-    Object.const_set :SPEAKING, true
+    AutotestNotification.const_set :SPEAKING, true
     AutotestNotification::Linux.expects(:has_notify?).returns(true)
     AutotestNotification::Linux.expects(:system).with("/usr/bin/espeak '1 test failed'")
     verify_notify(:notify_send)
   end
 
   def test_notify_when_use_zenity_with_speak
-    Object.const_set :SPEAKING, true
+    AutotestNotification.const_set :SPEAKING, true
     AutotestNotification::Linux.expects(:has_notify?).returns(false)
     AutotestNotification::Linux.expects(:has_zenity?).returns(true)
     AutotestNotification::Linux.expects(:system).with("/usr/bin/espeak '1 test failed'")
@@ -43,7 +44,7 @@ class TestLinux < Test::Unit::TestCase
   end
 
   def test_notify_when_use_kdialog_with_speak
-    Object.const_set :SPEAKING, true
+    AutotestNotification.const_set :SPEAKING, true
     AutotestNotification::Linux.expects(:has_notify?).returns(false)
     AutotestNotification::Linux.expects(:has_zenity?).returns(false)
     AutotestNotification::Linux.expects(:has_kdialog?).returns(true)
@@ -85,8 +86,6 @@ class TestLinux < Test::Unit::TestCase
 
   def verify_notify(method)
     AutotestNotification::Linux.expects(method).returns("title", "msg", "image", 1)
-    AutotestNotification::Linux.notify("title", "msg", "image",1)
+    AutotestNotification::Linux.notify("title", "msg", "image", 1, 1)
   end
-
 end
-

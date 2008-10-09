@@ -7,5 +7,4 @@ class TestCygwin < Test::Unit::TestCase
     AutotestNotification::Cygwin.expects(:system).with('sncmd /m \'title\' \'msg\' \'image\' /t 3')
     AutotestNotification::Cygwin.notify("title", "msg", "image")
   end
-  
 end
