@@ -1,7 +1,7 @@
 require 'autotest_notification/version'
 
-AUTHOR = "Carlos Brando, Rodrigo Urubatan, Alexandre da Silva, Carlos Júnior, Davis Zanetti Cabral, Marcos Tapajós, Thiago Pradi, Ozéias Sant'ana"
-EMAIL = "eduardobrando@gmail.com"
+AUTHOR = "Carlos Brando, Rodrigo Urubatan, Alexandre da Silva, Carlos Júnior, Davis Zanetti Cabral, Marcos Tapajós, Thiago Pradi, Ozéias Sant'ana, Samuel Flores, Diego Carrion"
+EMAIL = "autotest-notification@carlosbrando.com"
 DESCRIPTION = "This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results."
 GEM_NAME = 'autotest-notification' # what ppl will type to install your gem
 RUBYFORGE_PROJECT = nil # 'autotestnotific' # The unix name for your project

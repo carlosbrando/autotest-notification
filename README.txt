@@ -106,9 +106,10 @@ To turn off the notifier:
 * daviscabral [http://blog.impactmedia.com.br]
 * tapajos [http://www.improveit.com.br/tapajos]
 * tchandy [http://tchandy.wordpress.com]
-* ozsantana [http://blog.iconcreative.net/]
+* ozsantana [http://blog.iconcreative.net]
 * lucasuyezu [http://xucros.com]
-
+* samflores [http://github.com/samflores]
+* dcrec1 [http://www.mouseoverstudio.com/blog]
 
 == LICENSE:
 
