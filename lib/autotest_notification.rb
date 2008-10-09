@@ -1,5 +1,5 @@
 $:.unshift(File.dirname(__FILE__))
-%w{ linux mac windows cygwin doom }.each { |x| require "autotest_notification/#{x}" }
+%w{ linux mac windows cygwin doom buuf }.each { |x| require "autotest_notification/#{x}" }
 
 module AutotestNotification
   IMAGES_DIRECTORY = File.expand_path(File.dirname(__FILE__) + "/../images/")
