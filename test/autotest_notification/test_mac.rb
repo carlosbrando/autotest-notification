@@ -12,7 +12,7 @@ class TestMac < Test::Unit::TestCase
     Object.const_set :SPEAKING, true
     AutotestNotification::Mac.expects(:system).with("growlnotify -n autotest --image image -p 0 -m 'msg' title")
     AutotestNotification::Mac.expects(:system).with("say 1 test failed.")
-    AutotestNotification::Mac.notify("title", "msg", "image", 1)
+    AutotestNotification::Mac.notify("title", "msg", "image", 1, 1)
   end
 
   def test_notify_with_pending

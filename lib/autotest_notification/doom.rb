@@ -1,4 +1,7 @@
 module AutotestNotification
+  
+  DOOM_EDITION = false
+  
   class Doom
     class << self
       def image(total, failures)

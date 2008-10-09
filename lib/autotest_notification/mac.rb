@@ -10,6 +10,7 @@ module AutotestNotification
       end
 
       def say(total, failures)
+
         if failures > 0
           DOOM_EDITION ? Doom.play_sound(total, failures) : system("say #{failures} test#{'s' unless failures == 1} failed.")
           @last_test_failed = true

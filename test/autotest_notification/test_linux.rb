@@ -85,7 +85,7 @@ class TestLinux < Test::Unit::TestCase
 
   def verify_notify(method)
     AutotestNotification::Linux.expects(method).returns("title", "msg", "image", 1)
-    AutotestNotification::Linux.notify("title", "msg", "image",1)
+    AutotestNotification::Linux.notify("title", "msg", "image", 1, 1)
   end
 
 end

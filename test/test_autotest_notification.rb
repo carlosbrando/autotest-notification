@@ -6,6 +6,8 @@ class TestAutotestNotification < Test::Unit::TestCase
     @title = "title"
     @msg   = "message"
     @image = "image"
+    @total = 2
+    @failures = 1
     @pri   = 1
   end
   
@@ -20,19 +22,19 @@ class TestAutotestNotification < Test::Unit::TestCase
   end
   
   def test_notify_when_os_is_linux
-    AutotestNotification::Linux.expects(:notify).with(@title, @msg, @image,@pri)
+    AutotestNotification::Linux.expects(:notify).with(@title, @msg, @image, @total, @failures)
     verify_to("linux")
   end
   
   def test_notify_when_os_is_mac
-    AutotestNotification::Mac.expects(:notify).with(@title, @msg, @image, @pri, 0)
+    AutotestNotification::Mac.expects(:notify).with(@title, @msg, @image, @total, @failures, @pri)
     verify_to("darwin")
   end
   
   private
   def verify_to(so)
     AutotestNotification.const_set("RUBY_PLATFORM", so)
-    AutotestNotification.notify(@title, @msg, @image, @pri)
+    AutotestNotification.notify(@title, @msg, @image, @total, @failures, @pri)
   end
   
 end
