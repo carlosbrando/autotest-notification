@@ -110,6 +110,7 @@ To turn off the notifier:
 * lucasuyezu [http://xucros.com]
 * samflores [http://github.com/samflores]
 * dcrec1 [http://www.mouseoverstudio.com/blog]
+* nuxlli [http://www.nuxlli.com.br]
 
 == LICENSE:
 
