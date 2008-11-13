@@ -6,14 +6,6 @@
 
 This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.
 
-== FEATURES/PROBLEMS:
-
-* FIX (list of features or problems)
-
-== SYNOPSIS:
-
-  FIX (code sample of usage)
-
 == REQUIREMENTS:
 
 Independent of operating system you are using, you must install the ZenTest:

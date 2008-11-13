@@ -1,4 +1,60 @@
-== 0.0.1 2008-11-13
+== 1.7.0 2008-11-13
 
-* 1 major enhancement:
-  * Initial release
+* 1.7.0 - Nov 13, 2008
+	* Update to new newgem gem.
+
+* 1.6.0 - Oct 08, 2008
+  * Buuf Edition - display Buuf icons by Mattahan [http://mattahan.deviantart.com] (samflores)
+  * Added --sticky flag to an-install to keep notifications on screen in case of errors/failures or pending specs (samflores)
+  * Pending notifications now have a priority different from Passed and Failled notifications, to allow set diff color with Growl (samflores)
+
+* 1.5.0 - Oct 02, 2008
+	* If an-install is run with --pending, shows a yellow warning when there are no errors/failures but there are pending specs. (lucasuyezu)
+
+* 1.4.0 - Jun 18, 2008
+	* Special Doom Edition for Linux (ozsantana)
+
+* 1.3.1 - Jun 18, 2008
+	* Added backup to old .autotest file (tchandy)
+
+* 1.3.0 - Jun 18, 2008
+	* Added Doom sounds.
+
+* 1.2.0 - Jun 17, 2008
+	* Special Doom Edition
+
+* 1.1.2
+	* Refactoring code. 
+
+* 1.1.1 
+	* Changed to speak when passing the tests after a series of failures. Only in Mac.
+
+* 1.1.0
+	* Now speaking in Linux too.
+
+* 0.3.0
+	* If a test failed, the computer will speak. Only for Mac.
+
+* 0.2.2 2008-05-13
+	* Validating presence of KDialog; Fixing some identations.
+	* Adding some tests.
+
+* 0.2.1 2008-05-13
+	* Starting to add tests.
+
+* 0.2.0 2008-05-13
+	* Added support to Gnome at linux.rb (zenity).
+	* Changed filename windows.rb to cygwin.rb and added a new windows.rb file that uses Snarl to show the messages.
+	* README.txt updated with windows and linux dependencies.
+
+* 0.1.0 2008-05-13
+	* Separated each operating system into a different file to facilitate maintenance. It's necessary to conduct more tests in each scene.
+
+* 0.0.9:
+	* Adding KDE (kdialog) support.
+
+* 0.0.7:
+	* Added support to Windows.
+
+* 0.0.4:
+	* Added an-uninstall to remove the autotest hook.

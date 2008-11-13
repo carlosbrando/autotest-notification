@@ -1,7 +1,9 @@
 
-For more information on autotest-notification, see http://autotest-notification.rubyforge.org
+For more information on autotest_notification, see http://github.com/carlosbrando/autotest-notification/
 
-NOTE: Change this information in PostInstall.txt 
-You can also delete it if you don't want it.
+To turn on the notifier you need to run the following command:
+  an-install
 
+To turn off:
+  an-uninstall
 
