@@ -2,11 +2,17 @@
 
 * http://github.com/carlosbrando/autotest-notification/
 
-
 == DESCRIPTION:
 
 This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.
 
+== FEATURES/PROBLEMS:
+
+* FIX (list of features or problems)
+
+== SYNOPSIS:
+
+  FIX (code sample of usage)
 
 == REQUIREMENTS:
 
@@ -67,7 +73,6 @@ Independent of operating system you are using, you must install the ZenTest:
 
 		To hear the sounds of Doom Edition, you need the mplayer [http://www.mplayerhq.hu/design7/dload.html] installed.
 
-
 == INSTALL:
 
   $ sudo gem install carlosbrando-autotest-notification --source=http://gems.github.com
@@ -99,24 +104,24 @@ To turn off the notifier:
 
 == CONTRIBUTORS:
 
-* carlosbrando [http://www.nomedojogo.com]
-* simpsomboy [http://alexandredasilva.wordpress.com]
-* urubatan [http://www.urubatan.info]
-* chjunior [http://tas.milk-it.net]
-* daviscabral [http://blog.impactmedia.com.br]
-* tapajos [http://www.improveit.com.br/tapajos]
-* tchandy [http://tchandy.wordpress.com]
-* ozsantana [http://blog.iconcreative.net]
-* lucasuyezu [http://xucros.com]
-* samflores [http://github.com/samflores]
-* dcrec1 [http://www.mouseoverstudio.com/blog]
-* nuxlli [http://www.nuxlli.com.br]
+	* carlosbrando [http://www.nomedojogo.com]
+	* simpsomboy [http://alexandredasilva.wordpress.com]
+	* urubatan [http://www.urubatan.info]
+	* chjunior [http://tas.milk-it.net]
+	* daviscabral [http://blog.impactmedia.com.br]
+	* tapajos [http://www.improveit.com.br/tapajos]
+	* tchandy [http://tchandy.wordpress.com]
+	* ozsantana [http://blog.iconcreative.net]
+	* lucasuyezu [http://xucros.com]
+	* samflores [http://github.com/samflores]
+	* dcrec1 [http://www.mouseoverstudio.com/blog]
+	* nuxlli [http://www.nuxlli.com.br]
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2008
+Copyright (c) 2008 Carlos Brando
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
