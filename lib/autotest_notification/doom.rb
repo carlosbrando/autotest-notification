@@ -12,7 +12,7 @@ module AutotestNotification
         when /darwin/
           `#{File.expand_path(File.dirname(__FILE__) + "/../../bin/")}/playsound #{sound_file}`
         when /linux/
-          system("/usr/bin/mplayer #{sound_file}")
+          system("/usr/bin/mplayer #{sound_file} > /dev/null 2> /dev/null")
         end
       end
 
