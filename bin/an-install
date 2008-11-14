@@ -1,10 +1,91 @@
 #!/usr/bin/env ruby
-#
-#  Created on 2008-11-14.
+# 
+#  Created on 2008-5-11.
 #  Copyright (c) 2008. All rights reserved.
 
-require File.expand_path(File.dirname(__FILE__) + "/../lib/autotest-notification")
+begin
+  require 'rubygems'
+rescue LoadError
+  # no rubygems to load, so we fail silently
+end
 
-require "an_install/cli"
+require 'optparse'
+require 'ftools'
 
-AnInstall::CLI.execute(STDOUT, ARGV)
+# NOTE: the option -p/--path= is given as an example, and should probably be replaced in your application.
+
+OPTIONS = {
+  :path     => '~',
+  :speaking => false,
+  :doom => false,
+  :sticky => false,
+  :pending => false,
+  :buuf => false
+}
+MANDATORY_OPTIONS = %w(  )
+
+parser = OptionParser.new do |opts|
+  opts.banner = <<BANNER
+This application is wonderful because...
+
+Usage: #{File.basename($0)} [options]
+
+Options are:
+BANNER
+  opts.separator ""
+  
+  opts.on("-p", "--path=PATH", String,
+          "The root path for selecting files",
+          "Default: ~") { |OPTIONS[:path]| }
+          
+  opts.on("-s", "--speaking",
+          "If a test failed, the computer will speak.",
+          "For all plataforms.") { |OPTIONS[:speaking]| OPTIONS[:speaking] = true }
+          
+  opts.on("-d", "--doom",
+          "Special Doom Edition.",
+          "Only for Mac.") { |OPTIONS[:doom]| OPTIONS[:doom] = true }
+  
+  opts.on("-b", "--buuf",
+          "Special Buuf Images.",
+          "For all platforms") { |OPTIONS[:buuf]| }
+          
+  opts.on("--pending",
+          "Shows a different image when there are no errors/failures",
+          "but there are pending specs. Only for Mac.") { |OPTIONS[:pending]| OPTIONS[:pending] = true }
+    
+  opts.on("--sticky",
+          "Keep notification on screen in case of errros/failures or pending specs.",
+          "Only for Mac.") { |OPTIONS[:sticky]| OPTIONS[:sticky] = true }
+
+  opts.on("-h", "--help",
+          "Show this help message.") { puts opts; exit }
+          
+  opts.parse!(ARGV)
+
+  if MANDATORY_OPTIONS && MANDATORY_OPTIONS.find { |option| OPTIONS[option.to_sym].nil? }
+    puts opts; exit
+  end
+end
+
+path = OPTIONS[:path]
+
+autotest_path = File.expand_path(path)
+
+if File.exists?("#{autotest_path}/.autotest")
+  puts "\nYou Already have a .autotest file, renamed to .autotest.backup"
+  FileUtils.cp "#{autotest_path}/.autotest", "#{autotest_path}/.autotest.backup"
+end
+
+f = File.new("#{autotest_path}/.autotest",  "w")
+f.write "# ~.autotest\n"
+f.write "require 'autotest_notification'\n"
+f.write("SPEAKING = #{OPTIONS[:speaking]}\n")
+f.write("DOOM_EDITION = #{OPTIONS[:doom]}\n")
+f.write("BUUF = #{OPTIONS[:buuf]}\n")
+f.write("PENDING = #{OPTIONS[:pending]}\n")
+f.write("STICKY = #{OPTIONS[:sticky]}\n")
+f.close
+
+puts "\nAs from now all tests will be notified automatically."
+puts "" # a blank line

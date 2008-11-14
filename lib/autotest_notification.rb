@@ -1,12 +1,7 @@
-$:.unshift(File.dirname(__FILE__)) unless
-  $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
-
-require "autotest"
+$:.unshift(File.dirname(__FILE__))
 %w{ linux mac windows cygwin doom buuf }.each { |x| require "autotest_notification/#{x}" }
 
 module AutotestNotification
-  VERSION = '1.7.2'
-  
   IMAGES_DIRECTORY = File.expand_path(File.dirname(__FILE__) + "/../images/")
   SUCCESS_IMAGE    = "#{IMAGES_DIRECTORY}/pass.png";
   FAIL_IMAGE       = "#{IMAGES_DIRECTORY}/fail.png";
