@@ -3,6 +3,9 @@ Manifest.txt
 PostInstall.txt
 README.rdoc
 Rakefile
+bin/an-install
+bin/an-uninstall
+bin/playsound
 images/buuf/fail.png
 images/buuf/pass.png
 images/buuf/pending.png
@@ -16,6 +19,8 @@ images/doom/doom_6.png
 images/fail.png
 images/pass.png
 images/pending.png
+lib/an_install/cli.rb
+lib/an_uninstall/cli.rb
 lib/autotest_notification.rb
 script/console
 script/destroy
@@ -31,5 +36,7 @@ test/autotest_notification/test_cygwin.rb
 test/autotest_notification/test_linux.rb
 test/autotest_notification/test_mac.rb
 test/autotest_notification/test_windows.rb
+test/test_an-install_cli.rb
+test/test_an-uninstall_cli.rb
 test/test_autotest_notification.rb
 test/test_helper.rb

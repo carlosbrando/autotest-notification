@@ -5,7 +5,7 @@ require "autotest"
 %w{ linux mac windows cygwin doom buuf }.each { |x| require "autotest_notification/#{x}" }
 
 module AutotestNotification
-  VERSION = '1.7.1'
+  VERSION = '1.7.2'
   
   IMAGES_DIRECTORY = File.expand_path(File.dirname(__FILE__) + "/../images/")
   SUCCESS_IMAGE    = "#{IMAGES_DIRECTORY}/pass.png";
