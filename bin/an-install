@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+#
+#  Created on 2008-11-14.
+#  Copyright (c) 2008. All rights reserved.
+
+require File.expand_path(File.dirname(__FILE__) + "/../lib/autotest-notification")
+
+require "an_install/cli"
+
+AnInstall::CLI.execute(STDOUT, ARGV)
