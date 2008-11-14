@@ -108,7 +108,7 @@ To turn off the notifier:
 * tchandy [http://tchandy.wordpress.com]
 * ozsantana [http://blog.iconcreative.net]
 * lucasuyezu [http://xucros.com]
-* samflores [http://github.com/samflores]
+* samflores [http://www.thoughtsoverflow.com]
 * dcrec1 [http://www.mouseoverstudio.com/blog]
 * nuxlli [http://www.nuxlli.com.br]
 
