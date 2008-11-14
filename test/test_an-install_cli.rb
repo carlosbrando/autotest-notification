@@ -12,4 +12,8 @@ class TestAnInstallCli < Test::Unit::TestCase
   def test_not_print_default_output
     assert_no_match(/To update this executable/, @stdout)
   end
+  
+  # def test_print_successful_message
+  #   assert_match(/As from now all tests will be notified automatically/, @stdout)
+  # end
 end
