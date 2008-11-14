@@ -1,10 +1,12 @@
+# -*- encoding: utf-8 -*-
+
 Gem::Specification.new do |s|
   s.name = %q{autotest-notification}
-  s.version = "1.6.0"
+  s.version = "1.7.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Carlos Brando", "Rodrigo Urubatan", "Alexandre da Silva", "Carlos J\303\272nior", "Davis Zanetti Cabral", "Marcos Tapaj\303\263s", "Thiago Pradi", "Oz\303\251ias Sant'ana", "Samuel Flores", "Diego Carrion"]
-  s.date = %q{2008-10-09}
+  s.date = %q{2008-11-14}
   s.description = %q{This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.}
   s.email = ["autotest-notification@carlosbrando.com"]
   s.executables = ["an-install", "an-uninstall", "playsound"]
@@ -35,13 +37,13 @@ To turn off:
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<ZenTest>, [">= 3.9.2"])
-      s.add_development_dependency(%q<hoe>, [">= 1.7.0"])
+      s.add_development_dependency(%q<hoe>, [">= 1.8.0"])
     else
       s.add_dependency(%q<ZenTest>, [">= 3.9.2"])
-      s.add_dependency(%q<hoe>, [">= 1.7.0"])
+      s.add_dependency(%q<hoe>, [">= 1.8.0"])
     end
   else
     s.add_dependency(%q<ZenTest>, [">= 3.9.2"])
-    s.add_dependency(%q<hoe>, [">= 1.7.0"])
+    s.add_dependency(%q<hoe>, [">= 1.8.0"])
   end
 end
