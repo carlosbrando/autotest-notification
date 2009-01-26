@@ -11,6 +11,7 @@ end
 
 require 'optparse'
 require 'ftools'
+require 'fileutils'
 
 # NOTE: the option -p/--path= is given as an example, and should probably be replaced in your application.
 
@@ -20,7 +21,11 @@ OPTIONS = {
   :doom => false,
   :sticky => false,
   :pending => false,
-  :buuf => false
+  :buuf => false,
+  :sound => {
+    :success => nil,
+    :failure => nil
+  }
 }
 MANDATORY_OPTIONS = %w(  )
 
@@ -57,6 +62,14 @@ BANNER
   opts.on("--sticky",
           "Keep notification on screen in case of errros/failures or pending specs.",
           "Only for Mac.") { |OPTIONS[:sticky]| OPTIONS[:sticky] = true }
+          
+  opts.on("--success-sound=PATH", String,
+          "Sound to play on success.", 
+          "Only for Mac") { |OPTIONS[:sound][:success]| }
+          
+  opts.on("--failure-sound=PATH", String,
+          "Sound to play on success.",
+          "Only for Mac") { |OPTIONS[:sound][:failure]| }          
 
   opts.on("-h", "--help",
           "Show this help message.") { puts opts; exit }
@@ -85,6 +98,8 @@ f.write("DOOM_EDITION = #{OPTIONS[:doom]}\n")
 f.write("BUUF = #{OPTIONS[:buuf]}\n")
 f.write("PENDING = #{OPTIONS[:pending]}\n")
 f.write("STICKY = #{OPTIONS[:sticky]}\n")
+f.write("SUCCESS_SOUND = '#{OPTIONS[:sound][:success]}'\n")
+f.write("FAILURE_SOUND = '#{OPTIONS[:sound][:failure]}'\n")
 f.close
 
 puts "\nAs from now all tests will be notified automatically."
