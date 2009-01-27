@@ -2,9 +2,11 @@ module AutotestNotification
   class Linux
     class << self
 
-      def notify(title, msg, img, total = 1, failures = 0)
+      def notify(title, msg, img, total = 1, failures = 0, priority = 0)
+        @expiration_in_seconds = failures > 0 && STICKY ? 0 : EXPIRATION_IN_SECONDS
+
         if has_notify?
-          notify_send(title, msg, img)
+          notify_send(title, msg, img, priority)
         elsif has_zenity?
           zenity(title, msg, img)
         elsif has_kdialog?
@@ -17,23 +19,24 @@ module AutotestNotification
       protected
 
         def has_notify?
-          system "which notify-send 2> /dev/null"
+          system "which notify-send > /dev/null 2>&1"
         end
       
         def has_kdialog?
-          system "which kdialog 2> /dev/null"
+          system "which kdialog > /dev/null 2>&1"
         end
       
         def has_zenity?
-          system "which zenity 2> /dev/null"
+          system "which zenity > /dev/null 2>&1"
         end
         
-        def notify_send(title, msg, img)
-          system "notify-send -t #{EXPIRATION_IN_SECONDS * 1000} -i #{img} '#{title}' '#{msg}'"
+        def notify_send(title, msg, img, priority)
+          urgency = priority > 1 ? 'critical' : priority < 0 ? 'low' : 'normal'
+          system "notify-send -t #{@expiration_in_seconds * 1000} -i #{img} -u #{urgency} '#{title}' '#{msg}'"
         end
 
         def kdialog(title, msg, img)
-          system "kdialog --title '#{title}' --passivepopup '#{msg}' #{EXPIRATION_IN_SECONDS}"
+          system "kdialog --title '#{title}' --passivepopup '<img src=\"#{img}\" align=\"middle\"> #{msg}' #{@expiration_in_seconds}"
         end
 
         def zenity(title, msg, img)
