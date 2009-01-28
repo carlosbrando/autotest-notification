@@ -53,12 +53,12 @@ class TestLinux < Test::Unit::TestCase
   end
 
   def test_notify_send
-    AutotestNotification::Linux.expects(:system).with('notify-send -t 3000 -i image \'title\' \'msg\'')
+    AutotestNotification::Linux.expects(:system).with('notify-send -t 3000 -i image -u normal \'title\' \'msg\'')
     AutotestNotification::Linux.notify_send("title", "msg", "image")
   end
 
   def test_notify_kdialog
-    AutotestNotification::Linux.expects(:system).with('kdialog --title \'title\' --passivepopup \'msg\' 3')
+    AutotestNotification::Linux.expects(:system).with('kdialog --title \'title\' --passivepopup \'<img src="image" align="middle"> msg\' 3')
     AutotestNotification::Linux.kdialog("title", "msg", "image")
   end
 
@@ -68,17 +68,17 @@ class TestLinux < Test::Unit::TestCase
   end
 
   def test_has_zenity?
-    AutotestNotification::Linux.expects(:system).with('which zenity 2> /dev/null')
+    AutotestNotification::Linux.expects(:system).with('which zenity > /dev/null 2>&1')
     AutotestNotification::Linux.has_zenity?
   end
 
   def test_has_notify?
-    AutotestNotification::Linux.expects(:system).with('which notify-send 2> /dev/null')
+    AutotestNotification::Linux.expects(:system).with('which notify-send > /dev/null 2>&1')
     AutotestNotification::Linux.has_notify?
   end
 
   def test_has_kdialog?
-    AutotestNotification::Linux.expects(:system).with('which kdialog 2> /dev/null')
+    AutotestNotification::Linux.expects(:system).with('which kdialog > /dev/null 2>&1')
     AutotestNotification::Linux.has_kdialog?
   end
 

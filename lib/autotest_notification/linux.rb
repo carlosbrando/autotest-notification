@@ -30,12 +30,14 @@ module AutotestNotification
           system "which zenity > /dev/null 2>&1"
         end
         
-        def notify_send(title, msg, img, priority)
+        def notify_send(title, msg, img, priority = 0)
+          @expiration_in_seconds ||= EXPIRATION_IN_SECONDS
           urgency = priority > 1 ? 'critical' : priority < 0 ? 'low' : 'normal'
           system "notify-send -t #{@expiration_in_seconds * 1000} -i #{img} -u #{urgency} '#{title}' '#{msg}'"
         end
 
         def kdialog(title, msg, img)
+          @expiration_in_seconds ||= EXPIRATION_IN_SECONDS
           system "kdialog --title '#{title}' --passivepopup '<img src=\"#{img}\" align=\"middle\"> #{msg}' #{@expiration_in_seconds}"
         end
 

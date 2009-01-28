@@ -26,7 +26,7 @@ class TestAutotestNotification < Test::Unit::TestCase
   end
   
   def test_notify_when_os_is_linux
-    AutotestNotification::Linux.expects(:notify).with(@title, @msg, @image, @total, @failures)
+    AutotestNotification::Linux.expects(:notify).with(@title, @msg, @image, @total, @failures, @priority)
     verify_to("linux")
   end
   
