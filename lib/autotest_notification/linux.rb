@@ -3,7 +3,7 @@ module AutotestNotification
     class << self
 
       def notify(title, msg, img, total = 1, failures = 0, priority = 0)
-        @expiration_in_seconds = failures > 0 && STICKY ? 0 : EXPIRATION_IN_SECONDS
+        Config.expiration_in_seconds = 0 if failures > 0 && STICKY
 
         if has_notify?
           notify_send(title, msg, img, priority)
@@ -31,14 +31,12 @@ module AutotestNotification
         end
         
         def notify_send(title, msg, img, priority = 0)
-          @expiration_in_seconds ||= EXPIRATION_IN_SECONDS
           urgency = priority > 1 ? 'critical' : priority < 0 ? 'low' : 'normal'
-          system "notify-send -t #{@expiration_in_seconds * 1000} -i #{img} -u #{urgency} '#{title}' '#{msg}'"
+          system "notify-send -t #{Config.expiration_in_seconds * 1000} -i #{img} -u #{urgency} '#{title}' '#{msg}'"
         end
 
         def kdialog(title, msg, img)
-          @expiration_in_seconds ||= EXPIRATION_IN_SECONDS
-          system "kdialog --title '#{title}' --passivepopup '<img src=\"#{img}\" align=\"middle\"> #{msg}' #{@expiration_in_seconds}"
+          system "kdialog --title '#{title}' --passivepopup '<img src=\"#{img}\" align=\"middle\"> #{msg}' #{Config.expiration_in_seconds}"
         end
 
         def zenity(title, msg, img)

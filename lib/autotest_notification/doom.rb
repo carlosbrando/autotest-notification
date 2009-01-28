@@ -2,7 +2,7 @@ module AutotestNotification
   class Doom
     class << self
       def image(total, failures)
-        "#{IMAGES_DIRECTORY}/doom/doom_#{percent(total, failures)}.png"
+        "#{Config.images_directory}/doom/doom_#{percent(total, failures)}.png"
       end
 
       def play_sound(total, failures)

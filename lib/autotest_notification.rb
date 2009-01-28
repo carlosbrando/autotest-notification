@@ -1,13 +1,26 @@
 $:.unshift(File.dirname(__FILE__))
-%w{ linux mac windows cygwin doom buuf }.each { |x| require "autotest_notification/#{x}" }
 
 module AutotestNotification
-  IMAGES_DIRECTORY = File.expand_path(File.dirname(__FILE__) + "/../images/")
-  SUCCESS_IMAGE    = "#{IMAGES_DIRECTORY}/pass.png";
-  FAIL_IMAGE       = "#{IMAGES_DIRECTORY}/fail.png";
-  PENDING_IMAGE    = "#{IMAGES_DIRECTORY}/pending.png"
+  class Config
 
-  EXPIRATION_IN_SECONDS = 3
+    class << self
+      attr_reader :images_directory
+      attr_accessor :success_image, :fail_image, :pending_image, :expiration_in_seconds
+
+      def images_directory=(path)
+        @images_directory = File.expand_path(path)
+
+        @success_image = "#{@images_directory}/pass.png"
+        @fail_image    = "#{@images_directory}/fail.png"
+        @pending_image = "#{@images_directory}/pending.png"
+      end
+    end
+
+    self.images_directory = "#{File.dirname(__FILE__)}/../../images/"
+
+    self.expiration_in_seconds = 3
+
+  end
 
   Autotest.add_hook :ran_command do |at|
     result = at.results.is_a?(Array) ? at.results.last : at.results.split("\n").last
@@ -29,11 +42,11 @@ module AutotestNotification
       end
 
       if @failures > 0 || @errors > 0
-        notify "FAIL", msg, FAIL_IMAGE, @tests + @examples, @failures + @errors, 2
+        notify "FAIL", msg, Config.fail_image, @tests + @examples, @failures + @errors, 2
       elsif PENDING && @pendings > 0
-        notify "Pending", msg, PENDING_IMAGE, @tests + @examples, @failures + @errors, 1
+        notify "Pending", msg, Config.pending_image, @tests + @examples, @failures + @errors, 1
       else
-        notify "Pass", msg, SUCCESS_IMAGE, @tests + @examples, 0, -2
+        notify "Pass", msg, Config.success_image, @tests + @examples, 0, -2
       end
 
       puts "\e[#{code}m#{'=' * 80}\e[0m\n\n"
@@ -41,7 +54,7 @@ module AutotestNotification
   end
 
   class << self
-    def notify(title, msg, img = SUCCESS_IMAGE, total = 1, failures = 0, priority = 0)
+    def notify(title, msg, img = Config.success_image, total = 1, failures = 0, priority = 0)
 
       img = Doom.image(total, failures) if DOOM_EDITION
       img = Buuf.image(title.downcase) if BUUF
@@ -71,3 +84,5 @@ module AutotestNotification
     end
   end
 end
+
+%w{ linux mac windows cygwin doom buuf }.each { |x| require "autotest_notification/#{x}" }
