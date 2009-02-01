@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{autotest-notification}
-  s.version = "1.8.0"
+  s.version = "1.8.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Carlos Brando", "Rodrigo Urubatan", "Alexandre da Silva", "Carlos J\303\272nior", "Davis Zanetti Cabral", "Marcos Tapaj\303\263s", "Thiago Pradi", "Oz\303\251ias Sant'ana", "Samuel Flores", "Diego Carrion"]
-  s.date = %q{2009-01-26}
+  s.date = %q{2009-02-01}
   s.description = %q{This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.}
   s.email = ["autotest-notification@carlosbrando.com"]
   s.executables = ["an-install", "an-uninstall", "playsound"]
