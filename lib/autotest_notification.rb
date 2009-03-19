@@ -65,7 +65,7 @@ module AutotestNotification
       when /darwin/
         Mac.notify(title, msg, img, total, failures, priority)
       when /cygwin/
-        Cygwin.notify(title, msg, img)
+        Cygwin.notify(title, msg, img, total, failures)
       when /mswin/
         Windows.notify(title, msg, img)
       end

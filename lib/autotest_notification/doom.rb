@@ -13,6 +13,8 @@ module AutotestNotification
           `#{File.expand_path(File.dirname(__FILE__) + "/../../bin/")}/playsound #{sound_file}`
         when /linux/
           system("/usr/bin/mplayer #{sound_file} > /dev/null 2> /dev/null")
+        when /cygwin/
+          system "cp #{sound_file} /dev/dsp"
         end
       end
 

@@ -49,7 +49,7 @@ BANNER
           
   opts.on("-d", "--doom",
           "Special Doom Edition.",
-          "Only for Mac.") { |OPTIONS[:doom]| OPTIONS[:doom] = true }
+          "Only for Mac/Cygwin.") { |OPTIONS[:doom]| OPTIONS[:doom] = true }
   
   opts.on("-b", "--buuf",
           "Special Buuf Images.",
@@ -65,11 +65,11 @@ BANNER
           
   opts.on("--success-sound=PATH", String,
           "Sound to play on success.", 
-          "Only for Mac") { |OPTIONS[:sound][:success]| }
+          "Only for Mac/Cygwin.") { |OPTIONS[:sound][:success]| }
           
   opts.on("--failure-sound=PATH", String,
           "Sound to play on success.",
-          "Only for Mac") { |OPTIONS[:sound][:failure]| }          
+          "Only for Mac/Cygwin.") { |OPTIONS[:sound][:failure]| }          
 
   opts.on("-h", "--help",
           "Show this help message.") { puts opts; exit }
