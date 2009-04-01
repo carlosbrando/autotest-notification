@@ -6,8 +6,8 @@ module AutotestNotification
       
       def notify(title, msg, img, total = 1, failures = 0, priority = 0)
         system "growlnotify -n autotest --image #{img} #{'-s ' if ((failures > 0) and STICKY)}-p #{priority} -m '#{msg}' -t #{title}"
-        play(SUCCESS_SOUND) unless SUCCESS_SOUND.empty? or failures > 0
-        play(FAILURE_SOUND) unless FAILURE_SOUND.empty? or failures == 0
+        play(SUCCESS_SOUND) if const_defined?("SUCCESS_SOUND") and failures == 0
+        play(FAILURE_SOUND) if const_defined?("FAILURE_SOUND") and failures > 0
         say(total, failures) if SPEAKING
       end
 
