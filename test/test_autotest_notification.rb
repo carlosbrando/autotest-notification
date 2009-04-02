@@ -16,7 +16,7 @@ class TestAutotestNotification < Test::Unit::TestCase
   end
   
   def test_notify_when_os_is_cygwin
-    AutotestNotification::Cygwin.expects(:notify).with(@title, @msg, @image)
+    AutotestNotification::Cygwin.expects(:notify).with(@title, @msg, @image, @total, @failures)
     verify_to("cygwin")
   end
   

@@ -38,7 +38,7 @@ class TestMac < Test::Unit::TestCase
   end
   
   def test_success_sound_is_played_when_specified_and_test_success
-    AutotestNotification.const_set :SUCCESS_SOUND, sound_path
+    AutotestNotification.const_set :SUCCESS_SOUND, sound_path 
     AutotestNotification::Mac.expects(:play).with(sound_path)
     AutotestNotification::Mac.notify("title", "msg", "image", 1, 0)
   end
