@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# coding: UTF-8
 # 
 #  Created on 2008-5-11.
 #  Copyright (c) 2008. All rights reserved.
@@ -10,8 +11,6 @@ rescue LoadError
 end
 
 require 'optparse'
-require 'ftools'
-require 'fileutils'
 
 # NOTE: the option -p/--path= is given as an example, and should probably be replaced in your application.
 
@@ -41,35 +40,35 @@ BANNER
   
   opts.on("-p", "--path=PATH", String,
           "The root path for selecting files",
-          "Default: ~") { |OPTIONS[:path]| }
+          "Default: ~") { |path| OPTIONS[:path] = path}
           
   opts.on("-s", "--speaking",
           "If a test failed, the computer will speak.",
-          "For all plataforms.") { |OPTIONS[:speaking]| OPTIONS[:speaking] = true }
+          "For all plataforms.") { |speaking| OPTIONS[:speaking] = true }
           
   opts.on("-d", "--doom",
           "Special Doom Edition.",
-          "Only for Mac/Cygwin.") { |OPTIONS[:doom]| OPTIONS[:doom] = true }
+          "Only for Mac/Cygwin.") { |doom| OPTIONS[:doom] = true }
   
   opts.on("-b", "--buuf",
           "Special Buuf Images.",
-          "For all platforms") { |OPTIONS[:buuf]| }
+          "For all platforms") { |buuf| OPTIONS[:buuf] = true }
           
   opts.on("--pending",
           "Shows a different image when there are no errors/failures",
-          "but there are pending specs. Only for Mac.") { |OPTIONS[:pending]| OPTIONS[:pending] = true }
+          "but there are pending specs. Only for Mac.") { |pending| OPTIONS[:pending] = true }
     
   opts.on("--sticky",
           "Keep notification on screen in case of errros/failures or pending specs.",
-          "Only for Mac.") { |OPTIONS[:sticky]| OPTIONS[:sticky] = true }
+          "Only for Mac.") { |sticky| OPTIONS[:sticky] = true }
           
   opts.on("--success-sound=PATH", String,
           "Sound to play on success.", 
-          "Only for Mac/Cygwin.") { |OPTIONS[:sound][:success]| }
+          "Only for Mac/Cygwin.") { |success_sound| OPTIONS[:sound][:success] = success_sound }
           
   opts.on("--failure-sound=PATH", String,
           "Sound to play on success.",
-          "Only for Mac/Cygwin.") { |OPTIONS[:sound][:failure]| }          
+          "Only for Mac/Cygwin.") { |failure_sound| OPTIONS[:sound][:failure] = failure_sound }
 
   opts.on("-h", "--help",
           "Show this help message.") { puts opts; exit }

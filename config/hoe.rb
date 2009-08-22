@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 require 'autotest_notification/version'
 
 AUTHOR = "Carlos Brando, Rodrigo Urubatan, Alexandre da Silva, Carlos Júnior, Davis Zanetti Cabral, Marcos Tapajós, Thiago Pradi, Ozéias Sant'ana, Samuel Flores, Diego Carrion"

@@ -10,7 +10,6 @@ rescue LoadError
 end
 
 require 'optparse'
-require 'ftools'
 
 # NOTE: the option -p/--path= is given as an example, and should probably be replaced in your application.
 
@@ -30,7 +29,7 @@ BANNER
   opts.separator ""
   opts.on("-p", "--path=PATH", String,
           "The root path for selecting files",
-          "Default: ~") { |OPTIONS[:path]| }
+          "Default: ~") { |path| OPTIONS[:path] = path}
   opts.on("-h", "--help",
           "Show this help message.") { puts opts; exit }
   opts.parse!(ARGV)
