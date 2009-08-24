@@ -86,3 +86,8 @@ module AutotestNotification
 end
 
 %w{ linux mac windows cygwin doom buuf }.each { |x| require "autotest_notification/#{x}" }
+
+if RUBY_PLATFORM == 'java'
+  require 'java'
+  AutotestNotification.const_set :RUBY_PLATFORM, java.lang.System.getProperty('os.name').downcase
+end
