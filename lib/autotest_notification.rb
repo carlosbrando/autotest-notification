@@ -53,6 +53,38 @@ module AutotestNotification
     end
   end
 
+  Autotest.add_hook :ran_features do |at|
+    results = at.results.is_a?(Array) ? at.results.last(4): at.results.split("\n").last(4)
+    if results
+      # Initialize counters
+      %w( scenario step passed pending failed ).each do |x|
+        instance_variable_set "@scenario_#{x}", 0
+        instance_variable_set "@step_#{x}", 0
+      end
+      # How many scenarios and steps, passed, pending or failed?
+      for result in results
+        next unless result =~ /^\d+ (scenario|step)/
+        scenario_or_step = $1
+        %w( scenario step passed pending failed ).each do |x|
+          var_name = "@#{scenario_or_step}_#{x}"
+          instance_variable_set var_name, result[/(\d+) #{x}/, 1].to_i + instance_variable_get(var_name).to_i
+        end
+      end
+
+      code = (@scenario_failed + @step_failed > 0) ? 31 : (@scenario_pending + @step_pending > 0) ? 33 : 32
+      msg = feature_message(@scenario_scenario, @scenario_pending, @scenario_failed, @step_step, @step_pending, @step_failed)
+
+      if @scenario_failed + @step_failed > 0
+        notify "FAIL", msg, Config.fail_image, @scenario_scenario + @step_step, @scenario_failed + @step_failed, 2
+      elsif PENDING && @scenario_pending + @step_pending > 0
+        notify "Pending", msg, Config.pending_image, @scenario_scenario + @step_step, @scenario_failed + @step_failed, 1
+      else
+        notify "Pass", msg, Config.success_image, @scenario_scenario + @step_step, 0, -2
+      end
+      puts "\e[#{code}m#{'=' * 80}\e[0m\n\n"
+    end
+  end
+
   class << self
     def notify(title, msg, img = Config.success_image, total = 1, failures = 0, priority = 0)
 
@@ -81,6 +113,11 @@ module AutotestNotification
 
     def rspec_message(examples, failures, pendings)
       "#{pluralize('example', examples)}, #{pluralize('failure', failures)}, #{pendings} pending"
+    end
+
+    def feature_message(scenarios, pending_scenarios, failed_scenarios, steps, pending_steps, failed_steps)
+      "#{pluralize('scenario', scenarios)}, #{pluralize('failure', failed_scenarios)}, #{pending_scenarios} pending\n" +
+      "#{pluralize('step', steps)}, #{pluralize('failure', failed_steps)}, #{pending_steps} pending"
     end
   end
 end
