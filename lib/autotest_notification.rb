@@ -56,14 +56,16 @@ module AutotestNotification
   Autotest.add_hook :ran_features do |at|
     results = at.results.is_a?(Array) ? at.results.last(4): at.results.split("\n").last(4)
     if results
-      # How many scenarios and steps have passed, are pending or have failed?
+      # How many scenarios and steps have passed, are pending, have failed or are undefined?
       for result in results
         next unless result =~ /^\d+ (scenario|step)/
         scenario_or_step = $1
-        %w( scenario step passed pending failed ).each do |x|
+        %w( scenario step passed pending failed undefined ).each do |x|
           instance_variable_set "@#{scenario_or_step}_#{x}", result[/(\d+) #{x}/, 1].to_i
         end
       end
+      @scenario_failed += @scenario_undefined
+      @step_failed += @step_undefined
 
       code = (@scenario_failed + @step_failed > 0) ? 31 : (@scenario_pending + @step_pending > 0) ? 33 : 32
       msg = feature_message(@scenario_scenario, @scenario_pending, @scenario_failed, @step_step, @step_pending, @step_failed)
