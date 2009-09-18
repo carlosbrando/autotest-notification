@@ -56,18 +56,12 @@ module AutotestNotification
   Autotest.add_hook :ran_features do |at|
     results = at.results.is_a?(Array) ? at.results.last(4): at.results.split("\n").last(4)
     if results
-      # Initialize counters
-      %w( scenario step passed pending failed ).each do |x|
-        instance_variable_set "@scenario_#{x}", 0
-        instance_variable_set "@step_#{x}", 0
-      end
-      # How many scenarios and steps, passed, pending or failed?
+      # How many scenarios and steps have passed, are pending or have failed?
       for result in results
         next unless result =~ /^\d+ (scenario|step)/
         scenario_or_step = $1
         %w( scenario step passed pending failed ).each do |x|
-          var_name = "@#{scenario_or_step}_#{x}"
-          instance_variable_set var_name, result[/(\d+) #{x}/, 1].to_i + instance_variable_get(var_name).to_i
+          instance_variable_set "@#{scenario_or_step}_#{x}", result[/(\d+) #{x}/, 1].to_i
         end
       end
 
