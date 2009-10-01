@@ -111,6 +111,7 @@ To turn off the notifier:
 * samflores [http://www.thoughtsoverflow.com]
 * dcrec1 [http://www.mouseoverstudio.com/blog]
 * nuxlli [http://www.nuxlli.com.br]
+* ernestonakamura [http://github.com/ernestonakamura]
 
 == LICENSE:
 

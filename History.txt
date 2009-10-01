@@ -1,3 +1,6 @@
+2.1.0
+  * Added support for cucumber (ernestonakamura)
+
 1.6.0 - Oct 08, 2008
   * Buuf Edition - display Buuf icons by Mattahan [http://mattahan.deviantart.com] (samflores)
   * Added --sticky flag to an-install to keep notifications on screen in case of errors/failures or pending specs (samflores)
