@@ -54,7 +54,7 @@ module AutotestNotification
   end
 
   Autotest.add_hook :ran_features do |at|
-    results = at.results.is_a?(Array) ? at.results.last(4): at.results.split("\n").last(4)
+    results = at.results.is_a?(Array) ? at.results : at.results.split("\n")
     if results
       # How many scenarios and steps have passed, are pending, have failed or are undefined?
       for result in results
@@ -64,18 +64,20 @@ module AutotestNotification
           instance_variable_set "@#{scenario_or_step}_#{x}", result[/(\d+) #{x}/, 1].to_i
         end
       end
-      @scenario_failed += @scenario_undefined
-      @step_failed += @step_undefined
 
-      code = (@scenario_failed + @step_failed > 0) ? 31 : (@scenario_pending + @step_pending > 0) ? 33 : 32
-      msg = feature_message(@scenario_scenario, @scenario_pending, @scenario_failed, @step_step, @step_pending, @step_failed)
+      count = @scenario_scenario + @step_step
+      failed = @scenario_failed + @step_failed
+      pending = @scenario_pending + @step_pending + @scenario_undefined + @step_undefined
+
+      code = (failed > 0) ? 31 : (pending > 0) ? 33 : 32
+      msg = feature_message(@scenario_scenario, @scenario_pending + @scenario_undefined, @scenario_failed, @step_step, @step_pending + @step_undefined, @step_failed)
 
       if @scenario_failed + @step_failed > 0
-        notify "FAIL", msg, Config.fail_image, @scenario_scenario + @step_step, @scenario_failed + @step_failed, 2
-      elsif PENDING && @scenario_pending + @step_pending > 0
-        notify "Pending", msg, Config.pending_image, @scenario_scenario + @step_step, @scenario_failed + @step_failed, 1
+        notify "FAIL", msg, Config.fail_image, count, failed, 2
+      elsif PENDING && pending > 0
+        notify "Pending", msg, Config.pending_image, count, failed, 1
       else
-        notify "Pass", msg, Config.success_image, @scenario_scenario + @step_step, 0, -2
+        notify "Pass", msg, Config.success_image, count, 0, -2
       end
       puts "\e[#{code}m#{'=' * 80}\e[0m\n\n"
     end
