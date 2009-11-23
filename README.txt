@@ -70,7 +70,7 @@ Independent of operating system you are using, you must install the ZenTest:
 
 == INSTALL:
 
-  $ sudo gem install carlosbrando-autotest-notification --source=http://gems.github.com
+  $ sudo gem install autotest-notification
   
 Run it to let the notifier in automatic mode:
 
