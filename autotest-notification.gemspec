@@ -2,12 +2,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{autotest-notification}
-  s.version = "2.1.0"
+  s.version = "2.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Carlos Brando", "Rodrigo Urubatan", "Alexandre da Silva", "Carlos J\303\272nior", "Davis Zanetti Cabral", "Marcos Tapaj\303\263s", "Thiago Pradi", "Oz\303\251ias Sant'ana", "Samuel Flores", "Diego Carrion", "Ernesto Nakamura"]
-  s.date = %q{2009-10-01}
-  s.description = %q{This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.}
+  s.date = %q{2010-02-25}
+  s.description = %q{This gem set the autotest to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.}
   s.email = ["autotest-notification@carlosbrando.com"]
   s.executables = ["an-install", "an-uninstall", "playsound"]
   s.extra_rdoc_files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README.txt", "website/index.txt"]
@@ -26,8 +26,8 @@ To turn off:
   s.rdoc_options = ["--main", "README.txt"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{autotest-notification}
-  s.rubygems_version = %q{1.3.4}
-  s.summary = %q{This gem set the autotest (ZenTest) to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.}
+  s.rubygems_version = %q{1.3.5}
+  s.summary = %q{This gem set the autotest to send messages to software as Growl, LibNotify, and Snarl, displaying a window with the results.}
   s.test_files = ["test/autotest_notification/test_cygwin.rb", "test/autotest_notification/test_linux.rb", "test/autotest_notification/test_mac.rb", "test/autotest_notification/test_windows.rb", "test/test_autotest_notification.rb", "test/test_helper.rb"]
 
   if s.respond_to? :specification_version then
@@ -35,14 +35,14 @@ To turn off:
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<ZenTest>, [">= 3.9.2"])
+      s.add_runtime_dependency(%q<autotest>, [">= 4.2.9"])
       s.add_development_dependency(%q<hoe>, [">= 2.3.3"])
     else
-      s.add_dependency(%q<ZenTest>, [">= 3.9.2"])
+      s.add_dependency(%q<autotest>, [">= 4.2.9"])
       s.add_dependency(%q<hoe>, [">= 2.3.3"])
     end
   else
-    s.add_dependency(%q<ZenTest>, [">= 3.9.2"])
+    s.add_dependency(%q<autotest>, [">= 4.2.9"])
     s.add_dependency(%q<hoe>, [">= 2.3.3"])
   end
 end

@@ -10,11 +10,6 @@ This gem set the autotest (ZenTest) to send messages to software as Growl, LibNo
 
 == REQUIREMENTS:
 
-Independent of operating system you are using, you must install the ZenTest:
-
-	$ gem install ZenTest
-
-
 * If you're using a Mac:
     You need to have Growl and growlnotify installed on your machine.
     
