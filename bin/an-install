@@ -11,6 +11,7 @@ rescue LoadError
 end
 
 require 'optparse'
+require 'fileutils'
 
 # NOTE: the option -p/--path= is given as an example, and should probably be replaced in your application.
 
