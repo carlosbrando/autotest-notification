@@ -1,6 +1,10 @@
+require "autotest"
 $:.unshift(File.dirname(__FILE__))
 
 module AutotestNotification
+  
+  VERSION = '2.3.0'
+  
   class Config
 
     class << self

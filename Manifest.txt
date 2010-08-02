@@ -2,14 +2,12 @@ History.txt
 License.txt
 Manifest.txt
 PostInstall.txt
-README.txt
+README.rdoc
 Rakefile
 autotest-notification.gemspec
 bin/an-install
 bin/an-uninstall
 bin/playsound
-config/hoe.rb
-config/requirements.rb
 images/buuf/fail.png
 images/buuf/pass.png
 images/buuf/pending.png
@@ -29,7 +27,6 @@ lib/autotest_notification/cygwin.rb
 lib/autotest_notification/doom.rb
 lib/autotest_notification/linux.rb
 lib/autotest_notification/mac.rb
-lib/autotest_notification/version.rb
 lib/autotest_notification/windows.rb
 script/console
 script/destroy
