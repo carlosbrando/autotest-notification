@@ -28,11 +28,10 @@ module AutotestNotification
 
   Autotest.add_hook :ran_command do |at|
     
-    result = nil
-    if at.results.is_a?(Array)
-      result = at.results.last == "\n" ? at.results[-2] : at.results.last
+    result = if at.results.is_a?(Array)
+      at.results.last == "\n" ? at.results[-2] : at.results.last
     else 
-      result = at.results.split("\n").last
+      at.results.split("\n").last
     end
     
     if result
