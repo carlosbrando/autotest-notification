@@ -27,8 +27,14 @@ module AutotestNotification
   end
 
   Autotest.add_hook :ran_command do |at|
-    result = at.results.is_a?(Array) ? at.results.last : at.results.split("\n").last
-
+    
+    result = nil
+    if at.results.is_a?(Array)
+      result = at.results.last == "\n" ? at.results[-2] : at.results.last
+    else 
+      result = at.results.split("\n").last
+    end
+    
     if result
       %w{ test assertion error example pending failure }.each { |x| instance_variable_set "@#{x}s", result[/(\d+) #{x}/, 1].to_i }
 
