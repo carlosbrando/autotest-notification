@@ -29,7 +29,9 @@ module AutotestNotification
   Autotest.add_hook :ran_command do |at|
     
     result = if at.results.is_a?(Array)
-      at.results.last == "\n" ? at.results[-2] : at.results.last
+     # at.results.last == "\n" ? at.results[-2] : at.results.last
+     # Ensures a match agains the result array
+     at.results.select {|r| r =~ /(test|assertion|error|example|pending|failure)/i }.last
     else 
       at.results.split("\n").last
     end
