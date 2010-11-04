@@ -28,20 +28,24 @@ module AutotestNotification
 
   Autotest.add_hook :ran_command do |at|
     
-    result = if at.results.is_a?(Array)
-      at.results.last == "\n" ? at.results[-2] : at.results.last
-    else 
-      at.results.split("\n").last
+    if at.results.is_a?(Array)
+      at.results.reverse.each do |line|
+        if (line =~ /\d+\s(test|failure|error|skip)/) != nil
+          @result = line
+        end
+      end
+    else
+      @result = at.results.split("\n").last
     end
-    
-    if result
-      %w{ test assertion error example pending failure }.each { |x| instance_variable_set "@#{x}s", result[/(\d+) #{x}/, 1].to_i }
 
-      case result
-      when /test/i
+    if @result
+      %w{ test assertion error example pending failure }.each { |x| instance_variable_set "@#{x}s", @result[/(\d+) #{x}/, 1].to_i }
+
+      case @result
+      when /test/
         code = 31 if @failures > 0 || @errors > 0
         msg  = unit_test_message(@tests, @assertions, @failures, @errors)
-      when /example/i
+      when /example/
         code = (@failures > 0) ? 31 : (@pendings > 0) ? 33 : 32
         msg  = rspec_message(@examples, @failures, @pendings)
       else
