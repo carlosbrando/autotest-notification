@@ -38,10 +38,10 @@ module AutotestNotification
       %w{ test assertion error example pending failure }.each { |x| instance_variable_set "@#{x}s", result[/(\d+) #{x}/, 1].to_i }
 
       case result
-      when /test/
+      when /test/i
         code = 31 if @failures > 0 || @errors > 0
         msg  = unit_test_message(@tests, @assertions, @failures, @errors)
-      when /example/
+      when /example/i
         code = (@failures > 0) ? 31 : (@pendings > 0) ? 33 : 32
         msg  = rspec_message(@examples, @failures, @pendings)
       else
