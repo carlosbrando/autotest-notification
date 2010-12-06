@@ -12,6 +12,9 @@ module AutotestNotification
         elsif has_kdialog?
           kdialog(title, msg, img)
         end
+        if has_gconf?
+          gconf_bg(failures)
+        end
 
         say(total, failures) if SPEAKING
       end
@@ -21,18 +24,33 @@ module AutotestNotification
         def has_notify?
           system "which notify-send > /dev/null 2>&1"
         end
-      
+
         def has_kdialog?
           system "which kdialog > /dev/null 2>&1"
         end
-      
+
         def has_zenity?
           system "which zenity > /dev/null 2>&1"
         end
-        
+
+        def has_gconf?
+          system "which gconftool-2 > /dev/null 2>&1"
+        end
+
         def notify_send(title, msg, img, priority = 0)
           urgency = priority > 1 ? 'critical' : priority < 0 ? 'low' : 'normal'
           system "notify-send -t #{Config.expiration_in_seconds * 1000} -i #{img} -u #{urgency} '#{title}' '#{msg}'"
+        end
+
+        def gconf_bg(failures)
+          # Desktop background colors.
+          red_rgb   = '#ff0000'
+          green_rgb = '#074507'  # More pleasant green than #00ff00.
+          # Use gconftool-2 to change desktop background color.
+          desktop = "gconftool-2 -t str --set /desktop/gnome/background/primary_color '%s'"
+          desktop_pass = desktop % green_rgb
+          desktop_fail = desktop % red_rgb
+          system (failures > 0 ? desktop_fail : desktop_pass)
         end
 
         def kdialog(title, msg, img)
@@ -52,7 +70,7 @@ module AutotestNotification
         rescue
           puts "You need the #{DOOM_EDITION ? 'mplayer' : 'espeak'} installed to hear the sounds."
         end
-        
+
     end
   end
 end

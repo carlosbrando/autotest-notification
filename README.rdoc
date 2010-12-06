@@ -62,6 +62,10 @@ This gem set the autotest (ZenTest) to send messages to software as Growl, LibNo
 
 		To hear the sounds of Doom Edition, you need the mplayer [http://www.mplayerhq.hu/design7/dload.html] installed.
 
+    If you’re using GNOME, you can change your desktop background. You
+    need to have the _gconf2_ (apt) package installed in order to use
+    _gconftool-2_. Use the +--desktop+ option to enable.
+
 
 == INSTALL:
 
@@ -92,6 +96,10 @@ To turn off the notifier:
 
 	$ an-install --pending
 
+== Turn desktop background to red on errors.
+
+	$ an-install --desktop
+
 == CONTRIBUTORS:
 
 * carlosbrando [http://www.nomedojogo.com]
@@ -107,6 +115,7 @@ To turn off the notifier:
 * dcrec1 [http://www.mouseoverstudio.com/blog]
 * nuxlli [http://www.nuxlli.com.br]
 * ernestonakamura [http://github.com/ernestonakamura]
+* micahelliott [http://micahelliott.com]
 
 == LICENSE:
 

@@ -54,6 +54,10 @@ BANNER
   opts.on("-b", "--buuf",
           "Special Buuf Images.",
           "For all platforms") { |buuf| OPTIONS[:buuf] = true }
+
+  opts.on("-D", "--desktop",
+          "Change desktop background color.",
+          "Only for Linux (GNOME)") { |desktop| OPTIONS[:desktop] = true }
           
   opts.on("--pending",
           "Shows a different image when there are no errors/failures",
@@ -96,6 +100,7 @@ f.write "require 'autotest_notification'\n"
 f.write("SPEAKING = #{OPTIONS[:speaking]}\n")
 f.write("DOOM_EDITION = #{OPTIONS[:doom]}\n")
 f.write("BUUF = #{OPTIONS[:buuf]}\n")
+f.write("DESKTOP = #{OPTIONS[:desktop]}\n")
 f.write("PENDING = #{OPTIONS[:pending]}\n")
 f.write("STICKY = #{OPTIONS[:sticky]}\n")
 f.write("SUCCESS_SOUND = '#{OPTIONS[:sound][:success]}'\n")
