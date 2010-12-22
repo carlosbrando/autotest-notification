@@ -27,41 +27,34 @@ module AutotestNotification
   end
 
   Autotest.add_hook :ran_command do |at|
+    lines = autotest.results.map { |s| s.gsub(/(\e.*?m|\n)/, '') }   # remove escape sequences
+    lines.reject! { |line| !line.match(/\d+\s+(example|test|scenario|step)s?/) }   # isolate result numbers
     
-    result = if at.results.is_a?(Array)
-     # at.results.last == "\n" ? at.results[-2] : at.results.last
-     # Ensures a match agains the result array
-     at.results.select {|r| r =~ /(test|assertion|error|example|pending|failure)/i }.last
-    else 
-      at.results.split("\n").last
+    lines.each do |line|
+      %w{ test assertion error example pending failure }.each { |x| instance_variable_set "@#{x}s", line[/(\d+) #{x}/, 1].to_i }
     end
     
-    if result
-      %w{ test assertion error example pending failure }.each { |x| instance_variable_set "@#{x}s", result[/(\d+) #{x}/, 1].to_i }
-
-      case result
-      when /test/
-        code = 31 if @failures > 0 || @errors > 0
-        msg  = unit_test_message(@tests, @assertions, @failures, @errors)
-      when /example/
-        code = (@failures > 0) ? 31 : (@pendings > 0) ? 33 : 32
-        msg  = rspec_message(@examples, @failures, @pendings)
-      else
-        code = 31
-        msg  = "1 exception occurred"
-        @failures = 1
-      end
-
-      if @failures > 0 || @errors > 0
-        notify "FAIL", msg, Config.fail_image, @tests + @examples, @failures + @errors, 2
-      elsif PENDING && @pendings > 0
-        notify "Pending", msg, Config.pending_image, @tests + @examples, @failures + @errors, 1
-      else
-        notify "Pass", msg, Config.success_image, @tests + @examples, 0, -2
-      end
-
-      puts "\e[#{code}m#{'=' * 80}\e[0m\n\n"
+    if @tests
+      code = 31 if @failures > 0 || @errors > 0
+      msg  = unit_test_message(@tests, @assertions, @failures, @errors)
+    elsif @examples
+      code = (@failures > 0) ? 31 : (@pendings > 0) ? 33 : 32
+      msg  = rspec_message(@examples, @failures, @pendings)
+    else
+      code = 31
+      msg  = "1 exception occurred"
+      @failures = 1
     end
+
+    if @failures > 0 || @errors > 0
+      notify "FAIL", msg, Config.fail_image, @tests + @examples, @failures + @errors, 2
+    elsif PENDING && @pendings > 0
+      notify "Pending", msg, Config.pending_image, @tests + @examples, @failures + @errors, 1
+    else
+      notify "Pass", msg, Config.success_image, @tests + @examples, 0, -2
+    end
+
+    puts "\e[#{code}m#{'=' * 80}\e[0m\n\n"
   end
 
   Autotest.add_hook :ran_features do |at|
