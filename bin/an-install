@@ -92,6 +92,7 @@ end
 
 f = File.new("#{autotest_path}/.autotest",  "w")
 f.write "# ~.autotest\n"
+f.write "require 'rubygems'\n"
 f.write "require 'autotest_notification'\n"
 f.write("SPEAKING = #{OPTIONS[:speaking]}\n")
 f.write("DOOM_EDITION = #{OPTIONS[:doom]}\n")

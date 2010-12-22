@@ -1,5 +1,5 @@
 require 'rubygems'
-gem 'hoe', '>= 2.1.0'
+gem 'hoe', '>= 2.8.0'
 require 'hoe'
 require 'fileutils'
 require './lib/autotest_notification.rb'
@@ -15,7 +15,6 @@ $hoe = Hoe.spec 'autotest-notification.rb' do
   self.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
   self.rubyforge_name       = self.name # TODO this is default value
   self.extra_deps         = [['autotest','~> 4.4']]
-
 end
 
 require 'newgem/tasks'

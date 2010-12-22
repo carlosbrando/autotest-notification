@@ -3,7 +3,7 @@ $:.unshift(File.dirname(__FILE__))
 
 module AutotestNotification
   
-  VERSION = '2.3.0'
+  VERSION = '2.4.0'
   
   class Config
 
