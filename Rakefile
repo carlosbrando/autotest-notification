@@ -14,7 +14,7 @@ $hoe = Hoe.spec 'autotest-notification.rb' do
   self.developer 'Carlos Brando', 'eduardobrando@gmail.com'
   self.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
   self.rubyforge_name       = self.name # TODO this is default value
-  self.extra_deps         = [['autotest','~> 4.4']]
+  self.extra_deps         = [['autotest-standalone','~> 4.5']]
 end
 
 require 'newgem/tasks'
