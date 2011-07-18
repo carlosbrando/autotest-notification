@@ -3,7 +3,7 @@ $:.unshift(File.dirname(__FILE__))
 
 module AutotestNotification
   
-  VERSION = '2.4.0'
+  VERSION = '2.3.2'
   
   class Config
 
@@ -27,8 +27,8 @@ module AutotestNotification
   end
 
   Autotest.add_hook :ran_command do |at|
-    lines = autotest.results.map { |s| s.gsub(/(\e.*?m|\n)/, '') }   # remove escape sequences
-    lines.reject! { |line| !line.match(/\d+\s+(example|test|scenario|step)s?/) }   # isolate result numbers
+    lines = autotest.results.map { |s| s.gsub(/(\e.*?m|\n)/, '') } # remove escape sequences
+    lines.reject! { |line| !line.match(/\d+\s+(seed|example|test|scenario|step)s?/) } # isolate result numbers
     
     lines.each do |line|
       %w{ test assertion error example pending failure }.each { |x| instance_variable_set "@#{x}s", line[/(\d+) #{x}/, 1].to_i }
