@@ -3,7 +3,7 @@ $:.unshift(File.dirname(__FILE__))
 
 module AutotestNotification
   
-  VERSION = '2.3.2'
+  VERSION = '2.3.4'
   
   class Config
 
@@ -101,6 +101,8 @@ module AutotestNotification
       when /cygwin/
         Cygwin.notify(title, msg, img, total, failures)
       when /mswin/
+        Windows.notify(title, msg, img)
+      when /mingw/
         Windows.notify(title, msg, img)
       end
     end
