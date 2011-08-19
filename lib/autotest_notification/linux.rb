@@ -31,8 +31,8 @@ module AutotestNotification
         end
         
         def notify_send(title, msg, img, priority = 0)
-          urgency = priority > 1 ? 'critical' : priority < 0 ? 'low' : 'normal'
-          system "notify-send -t #{Config.expiration_in_seconds * 1000} -i #{img} -u #{urgency} '#{title}' '#{msg}'"
+          urgency = priority < 0 ? 'low' : Config.expiration_in_seconds > 0 ? 'normal' : 'critical'
+          system "notify-send -h int:transient:1 -t #{Config.expiration_in_seconds * 1000} -i #{img} -u #{urgency} '#{title}' '#{msg}'"
         end
 
         def kdialog(title, msg, img)
