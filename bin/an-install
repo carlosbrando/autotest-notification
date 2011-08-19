@@ -60,8 +60,8 @@ BANNER
           "but there are pending specs. Only for Mac.") { |pending| OPTIONS[:pending] = true }
     
   opts.on("--sticky",
-          "Keep notification on screen in case of errros/failures or pending specs.",
-          "Only for Mac.") { |sticky| OPTIONS[:sticky] = true }
+          "Keep notification on screen in case of errros/failures.",
+          "Only for Mac and Linux.") { |sticky| OPTIONS[:sticky] = true }
           
   opts.on("--success-sound=PATH", String,
           "Sound to play on success.", 
