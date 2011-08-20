@@ -1,4 +1,4 @@
-require 'snarl' if RUBY_PLATFORM =~ /mswin/
+require 'snarl' if RUBY_PLATFORM =~ /mswin/ or RUBY_PLATFORM =~ /mingw/
 
 module AutotestNotification
   class Windows
