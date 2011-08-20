@@ -103,6 +103,8 @@ module AutotestNotification
         Cygwin.notify(title, msg, img, total, failures)
       when /mswin/
         Windows.notify(title, msg, img)
+      when /mingw/
+        Windows.notify(title, msg, img)
       end
     end
 
