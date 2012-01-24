@@ -21,15 +21,15 @@ module AutotestNotification
         def has_notify?
           system "which notify-send > /dev/null 2>&1"
         end
-      
+
         def has_kdialog?
           system "which kdialog > /dev/null 2>&1"
         end
-      
+
         def has_zenity?
           system "which zenity > /dev/null 2>&1"
         end
-        
+
         def notify_send(title, msg, img, priority = 0)
           urgency = priority < 0 ? 'low' : Config.expiration_in_seconds > 0 ? 'normal' : 'critical'
           system "notify-send -h int:transient:1 -t #{Config.expiration_in_seconds * 1000} -i #{img} -u #{urgency} '#{title}' '#{msg}'"
@@ -52,7 +52,7 @@ module AutotestNotification
         rescue
           puts "You need the #{DOOM_EDITION ? 'mplayer' : 'espeak'} installed to hear the sounds."
         end
-        
+
     end
   end
 end
