@@ -3,3 +3,5 @@ pkg
 nbproject
 *.gem
 *.rbc
+.rvmrc
+Gemfile.lock

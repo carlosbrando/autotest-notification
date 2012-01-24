@@ -39,4 +39,8 @@ Gem::Specification.new do |s|
     # s.add_dependency(%q<rubyforge>, [">= 2.0.4"])
     # s.add_dependency(%q<hoe>, [">= 2.6.0"])
   end
+  s.add_development_dependency(%q<hoe>, '>= 2.8.0')
+  s.add_development_dependency(%q<newgem>)
+  s.add_development_dependency(%q<rdoc>)
+  s.add_development_dependency(%q<mocha>)
 end
