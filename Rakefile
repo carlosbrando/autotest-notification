@@ -1,5 +1,7 @@
 require 'rubygems'
-gem 'hoe', '>= 2.8.0'
+
+require 'bundler/setup'
+
 require 'hoe'
 require 'fileutils'
 require './lib/autotest_notification.rb'
