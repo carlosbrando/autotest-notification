@@ -64,9 +64,9 @@ This gem set the autotest (ZenTest) to send messages to software as Growl, LibNo
 
 * If you are using FreeBSD:
     Follow the instructions under 'Linux' section except
-		package-manager-specific stuff. On FreeBSD you should use your favorite
-		package manager (options are 'portinstall', 'pkg_install' or 'make' in the
-		corresponding port's directory).
+    package-manager-specific stuff. On FreeBSD you should use your favorite
+    package manager (options are 'portinstall', 'pkg_install' or 'make' in the
+    corresponding port's directory).
 
 
 == INSTALL:
