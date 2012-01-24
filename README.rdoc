@@ -62,6 +62,12 @@ This gem set the autotest (ZenTest) to send messages to software as Growl, LibNo
 
 		To hear the sounds of Doom Edition, you need the mplayer [http://www.mplayerhq.hu/design7/dload.html] installed.
 
+* If you are using FreeBSD:
+    Follow the instructions under 'Linux' section except
+		package-manager-specific stuff. On FreeBSD you should use your favorite
+		package manager (options are 'portinstall', 'pkg_install' or 'make' in the
+		corresponding port's directory).
+
 
 == INSTALL:
 
