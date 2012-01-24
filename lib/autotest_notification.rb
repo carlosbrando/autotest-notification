@@ -95,6 +95,8 @@ module AutotestNotification
       img = Buuf.image(title.downcase) if BUUF
 
       case RUBY_PLATFORM
+      when /freebsd/
+        FreeBSD.notify(title, msg, img, total, failures, priority)
       when /linux/
         Linux.notify(title, msg, img, total, failures, priority)
       when /darwin/
@@ -127,7 +129,7 @@ module AutotestNotification
   end
 end
 
-%w{ linux mac windows cygwin doom buuf }.each { |x| require "autotest_notification/#{x}" }
+%w{ freebsd linux mac windows cygwin doom buuf }.each { |x| require "autotest_notification/#{x}" }
 
 if RUBY_PLATFORM == 'java'
   require 'java'
