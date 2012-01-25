@@ -1,4 +1,5 @@
-require File.dirname(__FILE__) + '/../test_helper.rb'
+$:.unshift(File.expand_path('..', File.dirname(__FILE__)))
+require 'test_helper'
 
 class TestFreeBSD < Test::Unit::TestCase
 
@@ -31,7 +32,7 @@ class TestFreeBSD < Test::Unit::TestCase
   def test_notify_when_use_notify_with_speak
     AutotestNotification.const_set :SPEAKING, true
     AutotestNotification::FreeBSD.expects(:has_notify?).returns(true)
-    AutotestNotification::FreeBSD.expects(:system).with("/usr/bin/espeak '1 test failed'")
+    AutotestNotification::FreeBSD.expects(:system).with("/usr/local/bin/espeak '1 test failed'")
     verify_notify(:notify_send)
   end
 
@@ -39,7 +40,7 @@ class TestFreeBSD < Test::Unit::TestCase
     AutotestNotification.const_set :SPEAKING, true
     AutotestNotification::FreeBSD.expects(:has_notify?).returns(false)
     AutotestNotification::FreeBSD.expects(:has_zenity?).returns(true)
-    AutotestNotification::FreeBSD.expects(:system).with("/usr/bin/espeak '1 test failed'")
+    AutotestNotification::FreeBSD.expects(:system).with("/usr/local/bin/espeak '1 test failed'")
     verify_notify(:zenity)
   end
 
@@ -48,12 +49,12 @@ class TestFreeBSD < Test::Unit::TestCase
     AutotestNotification::FreeBSD.expects(:has_notify?).returns(false)
     AutotestNotification::FreeBSD.expects(:has_zenity?).returns(false)
     AutotestNotification::FreeBSD.expects(:has_kdialog?).returns(true)
-    AutotestNotification::FreeBSD.expects(:system).with("/usr/bin/espeak '1 test failed'")
+    AutotestNotification::FreeBSD.expects(:system).with("/usr/local/bin/espeak '1 test failed'")
     verify_notify(:kdialog)
   end
 
   def test_notify_send
-    AutotestNotification::FreeBSD.expects(:system).with('notify-send -t 3000 -i image -u normal \'title\' \'msg\'')
+    AutotestNotification::FreeBSD.expects(:system).with('notify-send -h int:transient:1 -t 3000 -i image -u normal \'title\' \'msg\'')
     AutotestNotification::FreeBSD.notify_send("title", "msg", "image")
   end
 
