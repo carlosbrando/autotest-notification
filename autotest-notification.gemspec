@@ -43,4 +43,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency(%q<newgem>)
   s.add_development_dependency(%q<rdoc>)
   s.add_development_dependency(%q<mocha>)
+  s.add_development_dependency(%q<test-unit>)
 end
