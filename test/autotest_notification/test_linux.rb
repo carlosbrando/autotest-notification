@@ -53,7 +53,7 @@ class TestLinux < Test::Unit::TestCase
   end
 
   def test_notify_send
-    AutotestNotification::Linux.expects(:system).with('notify-send -t 3000 -i image -u normal \'title\' \'msg\'')
+    AutotestNotification::Linux.expects(:system).with('notify-send -h int:transient:1 -t 3000 -i image -u normal \'title\' \'msg\'')
     AutotestNotification::Linux.notify_send("title", "msg", "image")
   end
 
