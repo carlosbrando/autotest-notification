@@ -1,8 +1,10 @@
+$:.unshift(File.expand_path('../lib', File.dirname(__FILE__)))
+
 require "test/unit"
 require "rubygems"
 require 'autotest'
 require "mocha"
-require File.dirname(__FILE__) + '/../lib/autotest_notification' unless defined?(AutotestNotification)
+require 'autotest_notification' unless defined?(AutotestNotification)
 
 class Test::Unit::TestCase
   def turn_methods_public(classe, method_name = nil)
